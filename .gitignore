@@ -1,0 +1,22 @@
+# OS junk files
+[Tt]humbs.db
+*.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Eclipse files
+.classpath
+.settings/
+.project
+
+# maven built files
+target/
+
+# other files
+*.swp
+*.swo
+*.log
+
