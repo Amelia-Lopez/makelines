@@ -1,0 +1,14 @@
+{
+	"textures" : [
+		{
+			"type" : "solid",
+			"blue" : "solid/blue.png",
+			"green" : "solid/green.png",
+			"orange" : "solid/orange.png",
+			"pink" : "solid/pink.png",
+			"purple" : "solid/purple.png",
+			"red" : "solid/red.png",
+			"white" : "solid/white.png"
+		}
+	]
+}
