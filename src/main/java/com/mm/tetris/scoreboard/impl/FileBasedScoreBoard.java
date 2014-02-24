@@ -1,18 +1,39 @@
 package com.mm.tetris.scoreboard.impl;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.commons.configuration.XMLConfiguration;
 
 import com.mm.tetris.scoreboard.Score;
 import com.mm.tetris.scoreboard.ScoreBoard;
 
-public class FileBasedScoreBoard implements ScoreBoard, Serializable {
+public class FileBasedScoreBoard implements ScoreBoard {
 
-	private static final long serialVersionUID = 1670235678247734914L;
 	
+	@Inject
+	private XMLConfiguration config;
 	
+	private ScoreBoardFile scoreBoardFile;
+	
+	private String fileName;
 
-	public boolean addScore(int score) {
+	public boolean addScore(String name, int score, int rows) {
+		loadCurrentConfig();
+		loadScoreBoardFile();
+		
+		List<Score> scores = scoreBoardFile.getScores();
+		
+		// determine if this is a new high score
+		int rank = -1;
+		for (int position = 0; position < scores.size(); position++) {
+			
+		}
+		
+		
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -26,4 +47,23 @@ public class FileBasedScoreBoard implements ScoreBoard, Serializable {
 		
 	}
 
+	private void loadCurrentConfig() {
+		this.fileName = null;
+	}
+	
+	private void loadScoreBoardFile() {
+		
+	}
+	
+	private static class ScoreBoardFile implements Serializable {
+		private List<Score> scores;
+		
+		public ScoreBoardFile() {
+			scores = new ArrayList<Score>();
+		}
+		
+		public List<Score> getScores() {
+			return scores;
+		}
+	}
 }
