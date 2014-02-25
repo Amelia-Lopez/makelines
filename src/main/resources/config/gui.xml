@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<gui>
+		<window>
+			<dimensions>
+				<width>640</width>
+				<height>480</height>
+				<width_padding>6</width_padding>
+				<height_padding>32</height_padding>
+			</dimensions>
+		</window>
+		<panel>
+			<dimensions>
+				<width>640</width>
+				<height>460</height>
+			</dimensions>
+			<color>black</color>
+		</panel>
+	</gui>
+</config>

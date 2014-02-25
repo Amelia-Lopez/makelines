@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import com.mm.tetris.gui.MainWindow;
 
 /**
  * Main entry point of the Tetris app
@@ -39,6 +40,7 @@ public class TetrisApp {
 		
 		// start application
 		log.info("Application starting...");
-		// TODO
+		MainWindow window = injector.getInstance(MainWindow.class);
+		window.setupGUI();
 	}
 }
