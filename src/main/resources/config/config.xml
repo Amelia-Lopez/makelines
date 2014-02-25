@@ -2,4 +2,5 @@
 <configuration>
 	<xml fileName="guiceModules.xml" />
 	<xml fileName="gui.xml" />
+	<xml fileName="menubar.xml" />
 </configuration>

@@ -16,5 +16,12 @@
 			</dimensions>
 			<color>black</color>
 		</panel>
+		<menubar>
+			<dimensions>
+				<width>640</width>
+				<height>20</height>
+			</dimensions>
+			<color>light_gray</color>
+		</menubar>
 	</gui>
 </config>

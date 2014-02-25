@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<menus>
+		<menu name="Tetris" mnemonic="VK_T">
+			<!--<item name="New Game"
+				mnemonic="VK_N"
+				type="JMenuItem"
+				action="com.mm.tetris.controller.actions.NewGameAction" />
+			<item name="Pause/Unpause"
+				mnemonic="VK_P"
+				type="JMenuItem"
+				action="com.mm.tetris.controller.actions.PauseAction" /> -->
+			<item name="Quit"
+				mnemonic="VK_Q"
+				type="JMenuItem"
+				action="com.mm.tetris.action.QuitAction" />
+		</menu>
+		<!--<menu name="Options" mnemonic="VK_O">
+			<item name="Show High Scores"
+				mnemonic="VK_H"
+				type="JMenuItem"
+				action="com.mm.tetris.controller.actions.ShowHighScoresAction" />
+			<item name="Accelerated Left/Right"
+				type="JCheckBoxMenuItem"
+				action="com.mm.tetris.controller.actions.AcceleratedMotionToggleAction" />
+		</menu> -->
+	</menus>
+</config>
