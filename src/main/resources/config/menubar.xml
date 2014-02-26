@@ -21,6 +21,7 @@
 				type="JMenuItem"
 				action="com.mm.tetris.controller.actions.ShowHighScoresAction" />
 			<item name="Accelerated Left/Right"
+				mnemonic="VK_A"
 				type="JCheckBoxMenuItem"
 				action="com.mm.tetris.controller.actions.AcceleratedMotionToggleAction" />
 		</menu> -->

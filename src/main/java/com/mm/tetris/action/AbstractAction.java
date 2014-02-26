@@ -1,9 +1,6 @@
 package com.mm.tetris.action;
 
-import java.awt.event.KeyEvent;
-
 import javax.swing.Action;
-
 
 public abstract class AbstractAction extends javax.swing.AbstractAction {
 
@@ -13,7 +10,7 @@ public abstract class AbstractAction extends javax.swing.AbstractAction {
 		putValue(Action.NAME, name);
 	}
 	
-	public void setMnemonic(final KeyEvent mnemonic) {
+	public void setMnemonic(final int mnemonic) {
 		putValue(Action.MNEMONIC_KEY, mnemonic);
 	}
 }
