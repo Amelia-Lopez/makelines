@@ -2,26 +2,21 @@
 <config>
 	<gui>
 		<window>
-			<dimensions>
-				<width>640</width>
-				<height>480</height>
-				<width_padding>6</width_padding>
-				<height_padding>32</height_padding>
-			</dimensions>
+			<dimensions width="640" height="480" width_padding="6" height_padding="32" />
 		</window>
-		<panel>
-			<dimensions>
-				<width>640</width>
-				<height>460</height>
-			</dimensions>
-			<color>black</color>
+		<panel color="black">
+			<dimensions width="640" height="460" />
 		</panel>
-		<menubar>
-			<dimensions>
-				<width>640</width>
-				<height>20</height>
-			</dimensions>
-			<color>light_gray</color>
+		<score size="3">
+			<scoreInfo name="Score" x="533" y="15" width="96" height="60"
+				backgroundFile="/textures/components/score.png" />
+			<scoreInfo name="Level" x="533" y="145" width="96" height="60"
+				backgroundFile="/textures/components/level.png" />
+			<scoreInfo name="Rows" x="533" y="270" width="96" height="60"
+				backgroundFile="/textures/components/rows.png" />
+		</score>
+		<menubar color="light_gray">
+			<dimensions width="640" height="20" />
 		</menubar>
 	</gui>
 </config>

@@ -21,6 +21,9 @@ public class MainWindow extends JFrame {
 	@Inject
 	private MenuBar menuBar;
 	
+	@Inject
+	private MainPanel mainPanel;
+	
 	/**
 	 * Constructor
 	 */
@@ -34,10 +37,10 @@ public class MainWindow extends JFrame {
 	public void setupGUI() {
 		// load config values
 		String configSection = "gui/window/dimensions/";
-		int width = config.getInt(configSection + "width");
-		int height = config.getInt(configSection + "height");
-		int widthPadding = config.getInt(configSection + "width_padding");
-		int heightPadding = config.getInt(configSection + "height_padding");
+		int width = config.getInt(configSection + "@width");
+		int height = config.getInt(configSection + "@height");
+		int widthPadding = config.getInt(configSection + "@width_padding");
+		int heightPadding = config.getInt(configSection + "@height_padding");
 		
 		// set up the main window
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -48,6 +51,10 @@ public class MainWindow extends JFrame {
 		// set up menu bar
 		menuBar.setupMenu();
 		setJMenuBar(menuBar);
+		
+		// set up the main panel that contains all of the components
+		mainPanel.setupPanel();
+		add(mainPanel);
 		
 		setVisible(true);
 	}

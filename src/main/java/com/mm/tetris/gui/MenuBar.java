@@ -1,10 +1,7 @@
 package com.mm.tetris.gui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
 
 import javax.inject.Inject;
 import javax.swing.JCheckBoxMenuItem;
@@ -43,12 +40,15 @@ public class MenuBar extends JMenuBar {
 		// do nothing
 	}
 	
+	/**
+	 * Creates the menu bar
+	 */
 	public void setupMenu() {
 		// load config values
 		String configSection = "gui/menubar/";
-		String colorName = config.getString(configSection + "color");
-		int width = config.getInt(configSection + "dimensions/width");
-		int height = config.getInt(configSection + "dimensions/height");
+		String colorName = config.getString(configSection + "@color");
+		int width = config.getInt(configSection + "dimensions/@width");
+		int height = config.getInt(configSection + "dimensions/@height");
 		
 		setOpaque(true);
         setBackground(reflectionUtil.getColor(colorName));
@@ -57,6 +57,9 @@ public class MenuBar extends JMenuBar {
         populateMenuFromConfig();
 	}
 	
+	/**
+	 * Adds configured menus and items
+	 */
 	private void populateMenuFromConfig() {
 		log.debug("Entering method populateMenuFromConfig()");
 		int numberOfMenus = configUtil.getNumberOfElements("menus");
@@ -100,19 +103,16 @@ public class MenuBar extends JMenuBar {
 						menuCheckBox.setAccelerator(
 								KeyStroke.getKeyStroke(
 										itemKeyEvent,
-										Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+										Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 						menu.add(menuCheckBox);
 						break;
 						
 					default:
 						log.warn("Invalid configuration. Type not supported: " + itemType);
 				}
-				
 			}
 			
 			add(menu);
 		}
 	}
-	
-	
 }

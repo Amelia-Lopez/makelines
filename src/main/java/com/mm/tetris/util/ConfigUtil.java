@@ -33,7 +33,7 @@ public class ConfigUtil {
 					String.class);
 			method.setAccessible(true);
 			Object value = method.invoke(config, "count(" + configPath + ")");
-			size = new Double((Double) ((List) value).get(0)).intValue();
+			size = ((Double) ((List) value).get(0)).intValue();
 			
 			log.debug("Number of elements for config [" + configPath + "] is " + size);
 		} catch (Throwable t) {
