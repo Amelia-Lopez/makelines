@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<menus>
-		<menu name="Tetris" mnemonic="VK_T">
+	<menus size="1">
+		<menu name="Tetris" mnemonic="VK_T" size="1">
 			<!--<item name="New Game"
 				mnemonic="VK_N"
 				type="JMenuItem"

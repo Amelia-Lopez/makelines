@@ -17,7 +17,6 @@ import org.slf4j.LoggerFactory;
 
 import com.mm.tetris.action.AbstractAction;
 import com.mm.tetris.util.ReflectionUtil;
-import com.mm.tetris.util.ConfigUtil;
 
 public class MenuBar extends JMenuBar {
 
@@ -30,9 +29,6 @@ public class MenuBar extends JMenuBar {
 	
 	@Inject
 	private ReflectionUtil reflectionUtil;
-	
-	@Inject
-	private ConfigUtil configUtil;
 	
 	private Color backgroundColor;
 	
@@ -65,12 +61,12 @@ public class MenuBar extends JMenuBar {
 	 */
 	private void populateMenuFromConfig() {
 		log.debug("Entering method populateMenuFromConfig()");
-		int numberOfMenus = configUtil.getNumberOfElements("menus");
+		int numberOfMenus = config.getInt("menus/@size");
 		for (int menuPosition = 1; menuPosition <= numberOfMenus; menuPosition++) {
 			// load config for menu
-			String menuConfigPath = "menus/menu[" + menuPosition + "]";
-			String name = config.getString(menuConfigPath + "/@name");
-			String mnemonic = config.getString(menuConfigPath + "/@mnemonic");
+			String menuConfigPath = "menus/menu[" + menuPosition + "]/";
+			String name = config.getString(menuConfigPath + "@name");
+			String mnemonic = config.getString(menuConfigPath + "@mnemonic");
 			log.debug("Adding menu: " + name);
 			
 			JMenu menu = new JMenu(name);
@@ -78,14 +74,14 @@ public class MenuBar extends JMenuBar {
 			menu.setOpaque(true);
 			menu.setBackground(backgroundColor);
 			
-			int numberOfItems = configUtil.getNumberOfElements(menuConfigPath);
+			int numberOfItems = config.getInt(menuConfigPath + "@size");
 			for (int itemPosition = 1; itemPosition <= numberOfItems; itemPosition++) {
 				// load config for menu item
-				String itemConfigPath = menuConfigPath + "/item[" + itemPosition + "]";
-				String itemName = config.getString(itemConfigPath + "/@name");
-				String itemMnemonic = config.getString(itemConfigPath + "/@mnemonic");
-				String itemType = config.getString(itemConfigPath + "/@type");
-				String itemAction = config.getString(itemConfigPath + "/@action");
+				String itemConfigPath = menuConfigPath + "item[" + itemPosition + "]/";
+				String itemName = config.getString(itemConfigPath + "@name");
+				String itemMnemonic = config.getString(itemConfigPath + "@mnemonic");
+				String itemType = config.getString(itemConfigPath + "@type");
+				String itemAction = config.getString(itemConfigPath + "@action");
 				log.debug("Adding menu item: " + itemName);
 				
 				AbstractAction action = reflectionUtil.<AbstractAction>newInstance(itemAction);
