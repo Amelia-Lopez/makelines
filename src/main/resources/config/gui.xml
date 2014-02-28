@@ -2,9 +2,9 @@
 <config>
 	<gui>
 		<window>
-			<dimensions width="640" height="480" width_padding="6" height_padding="32" />
+			<dimensions width="640" height="480" width_padding="0" height_padding="0" />
 		</window>
-		<panel color="black">
+		<panel color="blue">
 			<dimensions width="640" height="460" />
 		</panel>
 		<score size="3">

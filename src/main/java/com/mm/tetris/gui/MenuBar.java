@@ -1,5 +1,6 @@
 package com.mm.tetris.gui;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -33,6 +34,8 @@ public class MenuBar extends JMenuBar {
 	@Inject
 	private ConfigUtil configUtil;
 	
+	private Color backgroundColor;
+	
 	/**
 	 * Constructor
 	 */
@@ -51,7 +54,7 @@ public class MenuBar extends JMenuBar {
 		int height = config.getInt(configSection + "dimensions/@height");
 		
 		setOpaque(true);
-        setBackground(reflectionUtil.getColor(colorName));
+        setBackground(backgroundColor = reflectionUtil.getColor(colorName));
         setPreferredSize(new Dimension(width, height));
 		
         populateMenuFromConfig();
@@ -72,6 +75,8 @@ public class MenuBar extends JMenuBar {
 			
 			JMenu menu = new JMenu(name);
 			menu.setMnemonic(reflectionUtil.getKeyEvent(mnemonic));
+			menu.setOpaque(true);
+			menu.setBackground(backgroundColor);
 			
 			int numberOfItems = configUtil.getNumberOfElements(menuConfigPath);
 			for (int itemPosition = 1; itemPosition <= numberOfItems; itemPosition++) {
@@ -91,6 +96,7 @@ public class MenuBar extends JMenuBar {
 				switch (itemType) {
 					case "JMenuItem":
 						JMenuItem menuItem = new JMenuItem(action);
+						menuItem.setOpaque(true);
 						menuItem.setAccelerator(
 								KeyStroke.getKeyStroke(
 										itemKeyEvent,
@@ -100,6 +106,7 @@ public class MenuBar extends JMenuBar {
 						
 					case "JCheckBoxMenuItem":
 						JCheckBoxMenuItem menuCheckBox = new JCheckBoxMenuItem(action);
+						menuCheckBox.setOpaque(true);
 						menuCheckBox.setAccelerator(
 								KeyStroke.getKeyStroke(
 										itemKeyEvent,
