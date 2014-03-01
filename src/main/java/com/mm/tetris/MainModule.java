@@ -1,5 +1,7 @@
 package com.mm.tetris;
 
+import javax.inject.Singleton;
+
 import org.apache.commons.configuration.CombinedConfiguration;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.DefaultConfigurationBuilder;
@@ -19,7 +21,7 @@ public class MainModule extends AbstractModule {
 		
 	}
 	
-	@Provides
+	@Provides @Singleton
 	public Configuration providesConfiguration() {
 		CombinedConfiguration config = null;
 		

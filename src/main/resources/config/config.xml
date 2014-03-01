@@ -3,4 +3,5 @@
 	<xml fileName="guiceModules.xml" />
 	<xml fileName="gui.xml" />
 	<xml fileName="menubar.xml" />
+	<xml fileName="tetrominos.xml" />
 </configuration>

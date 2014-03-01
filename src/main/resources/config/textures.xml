@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<textures>
+		<blocks default="solid">
+			<solid path="textures/pieces/solid/" size="7">
+				<block color="blue" file="blue.png" />
+				<block color="green" file="green.png" />
+				<block color="orange" file="orange.png" />
+				<block color="pink" file="pink.png" />
+				<block color="purple" file="purple.png" />
+				<block color="red" file="red.png" />
+				<block color="white" file="white.png" />
+			</solid>
+		</blocks>
+	</textures>
+</config>

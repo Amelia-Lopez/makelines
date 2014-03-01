@@ -44,7 +44,7 @@ public class MainWindow extends JFrame {
 		
 		// set up the main window
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setResizable(false);
+		setResizable(config.getBoolean("gui/window/@resizable"));
 		setLayout(null);
 		setSize(new Dimension(width + widthPadding, height + heightPadding));
 		

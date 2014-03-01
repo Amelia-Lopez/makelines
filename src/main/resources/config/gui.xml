@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<gui>
-		<window>
-			<dimensions width="640" height="480" width_padding="0" height_padding="0" />
+		<window resizable="false">
+			<dimensions width="640" height="480" width_padding="0" height_padding="22" />
 		</window>
-		<panel color="blue">
+		<panel color="magenta">
 			<dimensions width="640" height="460" />
 		</panel>
 		<score size="3">
-			<scoreInfo name="Score" x="533" y="15" width="96" height="60"
+			<scoreInfo name="Score" x="487" y="25" width="96" height="60"
 				backgroundFile="/textures/components/score.png" />
-			<scoreInfo name="Level" x="533" y="145" width="96" height="60"
+			<scoreInfo name="Level" x="487" y="125" width="96" height="60"
 				backgroundFile="/textures/components/level.png" />
-			<scoreInfo name="Rows" x="533" y="270" width="96" height="60"
+			<scoreInfo name="Rows" x="487" y="220" width="96" height="60"
 				backgroundFile="/textures/components/rows.png" />
 		</score>
 		<menubar color="light_gray">
 			<dimensions width="640" height="20" />
 		</menubar>
+		<blockboard color="black" border_color="blue">
+			<dimensions width="222" height="442" />
+			<position x="208" y="9" />
+		</blockboard>
+		<block length="22" />
 	</gui>
 </config>
