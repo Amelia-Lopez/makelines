@@ -60,7 +60,7 @@ public class MenuBar extends JMenuBar {
 	 * Adds configured menus and items
 	 */
 	private void populateMenuFromConfig() {
-		log.debug("Entering method populateMenuFromConfig()");
+		log.trace("Entering method populateMenuFromConfig()");
 		int numberOfMenus = config.getInt("menus/@size");
 		for (int menuPosition = 1; menuPosition <= numberOfMenus; menuPosition++) {
 			// load config for menu

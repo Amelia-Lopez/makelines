@@ -27,7 +27,7 @@ public class ImageUtil {
 	 * @return BufferedImage
 	 */
 	public BufferedImage getImageFromFile(String fileName) {
-		log.debug("file name: " + fileName);
+		log.debug("File name: " + fileName);
 		BufferedImage image = null;
 		
 		try {
