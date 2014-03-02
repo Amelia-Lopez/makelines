@@ -31,7 +31,7 @@ public class Ticker implements Runnable {
 		// do nothing
 	}
 	
-	public Ticker init(final TickListener tickListener) {
+	public Ticker setTickListener(final TickListener tickListener) {
 		this.tickListener = tickListener;
 		return this;  // convenience
 	}

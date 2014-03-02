@@ -28,6 +28,8 @@ public class MainController implements Controller {
 	@Inject
 	private Ticker ticker;
 	
+	private boolean skipATick = false;
+	
 	
 	/**
 	 * Constructor
@@ -44,9 +46,7 @@ public class MainController implements Controller {
 		
 		// start the game
 		blockBoard.start();
-		
-		
-		
+		ticker.setTickListener(this).setInterval(300).start();
 	}
 
 	@Override
