@@ -13,4 +13,6 @@ public interface ScoreKeeper {
 	void clearedRows(int numberOfRows);
 	
 	void fastDrop(int dropHeight);
+	
+	void reset();
 }

@@ -29,4 +29,9 @@ public class ScoreKeeperImpl implements ScoreKeeper {
 	public void fastDrop(int dropHeight) {
 		// to do
 	}
+	
+	@Override
+	public void reset() {
+		// to do
+	}
 }

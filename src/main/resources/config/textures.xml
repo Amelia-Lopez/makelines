@@ -2,7 +2,7 @@
 <config>
 	<textures>
 		<blocks default="solid">
-			<solid path="textures/pieces/solid/" size="7">
+			<solid path="/textures/pieces/solid/" size="7">
 				<block color="blue" file="blue.png" />
 				<block color="green" file="green.png" />
 				<block color="orange" file="orange.png" />

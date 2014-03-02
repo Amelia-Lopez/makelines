@@ -3,13 +3,15 @@ package com.mm.tetris.gui;
 import java.awt.Dimension;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.JFrame;
 
 import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class MainWindow extends JFrame {
+@Singleton
+public class MainWindow extends JFrame implements Paintable {
 
 	private static final long serialVersionUID = 16467159141850531L;
 	

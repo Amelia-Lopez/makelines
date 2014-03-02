@@ -4,4 +4,5 @@
 	<xml fileName="gui.xml" />
 	<xml fileName="menubar.xml" />
 	<xml fileName="tetrominos.xml" />
+	<xml fileName="textures.xml" />
 </configuration>

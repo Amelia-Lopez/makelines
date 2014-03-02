@@ -11,6 +11,10 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
+import com.google.inject.name.Names;
+import com.mm.tetris.gui.BlockBoardView;
+import com.mm.tetris.gui.MainWindow;
+import com.mm.tetris.gui.Paintable;
 
 public class MainModule extends AbstractModule {
 	
@@ -18,7 +22,13 @@ public class MainModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
+		bind(Paintable.class)
+        	.annotatedWith(Names.named("All"))
+        	.to(MainWindow.class);
 		
+		bind(Paintable.class)
+    		.annotatedWith(Names.named("Board"))
+    		.to(BlockBoardView.class);
 	}
 	
 	@Provides @Singleton

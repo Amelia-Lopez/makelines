@@ -11,14 +11,20 @@ import com.mm.tetris.board.builder.TetrominoLoader;
 @Singleton
 public class TetrominoFactory {
 	
+	@Inject
+	private TetrominoLoader tetrominoLoader;
+	
 	private ArrayList<Tetromino> tetrominos;
 	private Random randomGenerator;
 	
 	/**
 	 * Constructor
 	 */
-	@Inject
-	public TetrominoFactory(TetrominoLoader tetrominoLoader) {
+	public TetrominoFactory() {
+		// do nothing
+	}
+	
+	public void init() {
 		tetrominos = tetrominoLoader.loadTetrominos();
 		randomGenerator = new Random();
 	}

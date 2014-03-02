@@ -1,11 +1,11 @@
 package com.mm.tetris.gui;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 import org.apache.commons.configuration.Configuration;
 
@@ -16,7 +16,8 @@ import com.mm.tetris.util.ReflectionUtil;
 /**
  * View code for the BlockBoard that uses Java2D
  */
-public class BlockBoardView extends BackgroundComponent {
+@Singleton
+public class BlockBoardView extends BackgroundComponent implements Paintable {
 
 	private static final long serialVersionUID = -8889994001173750284L;
 	
@@ -58,6 +59,9 @@ public class BlockBoardView extends BackgroundComponent {
 		
 		// block size
 		blockSize = config.getInt("gui/block/@length");
+		
+		// initialize data model
+		blockBoard.init();
 	}
 
 	/**
