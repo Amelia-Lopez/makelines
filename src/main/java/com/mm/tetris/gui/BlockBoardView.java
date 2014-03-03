@@ -71,7 +71,7 @@ public class BlockBoardView extends BackgroundComponent implements Paintable {
 	public void paint(Graphics2D g2) {
 		for (int x = 0; x < blockBoard.getWidth(); x++) {
 			for (int y = 0; y < blockBoard.getHeight(); y++) {
-				Block block = blockBoard.getBlock(x, y);
+				Block block = blockBoard.getBlockAt(x, y);
 				if (block != null) {
 					block.paint(g2);
 				}

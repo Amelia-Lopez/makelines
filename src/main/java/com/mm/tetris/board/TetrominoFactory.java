@@ -7,9 +7,13 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import com.mm.tetris.board.builder.TetrominoLoader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Singleton
 public class TetrominoFactory {
+
+    private static Logger log = LoggerFactory.getLogger(TetrominoFactory.class);
 	
 	@Inject
 	private TetrominoLoader tetrominoLoader;
@@ -34,6 +38,7 @@ public class TetrominoFactory {
 	 * @return Tetromino
 	 */
 	public Tetromino getRandomTetromino() {
-		return tetrominos.get(randomGenerator.nextInt(tetrominos.size()));
-	}
+        log.debug("Creating new tetromino");
+        return tetrominos.get(randomGenerator.nextInt(tetrominos.size()));
+    }
 }

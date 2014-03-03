@@ -14,7 +14,7 @@ public class QuitAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		log.info("Exiting application normally.");
+		log.info("Exiting application normally");
 		System.exit(0);
 	}
 }

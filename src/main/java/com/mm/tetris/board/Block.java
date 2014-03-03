@@ -18,9 +18,14 @@ public class Block {
 		return isFalling;
 	}
 	
-	public void stopFalling() {
+	public Block stopFalling() {
 		isFalling = false;
+        return this;  // convenience
 	}
+
+    public Block clone() {
+        return new Block(texture);
+    }
 	
 	public void paint(Graphics2D g2) {
 		g2.drawImage(texture, 0, 0, null);

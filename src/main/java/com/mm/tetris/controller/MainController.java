@@ -4,11 +4,18 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.mm.tetris.board.BlockBoard;
+import com.mm.tetris.board.BlockBoard.TetrominoDropResult;
 import com.mm.tetris.gui.Paintable;
 import com.mm.tetris.gui.ScoreBoardView;
 import com.mm.tetris.score.ScoreKeeper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 public class MainController implements Controller {
+
+    private static Logger log = LoggerFactory.getLogger(MainController.class);
 	
 	@Inject
 	private BlockBoard blockBoard;
@@ -40,19 +47,36 @@ public class MainController implements Controller {
 
 	@Override
 	public void newGame() {
-		// reset
-		scoreKeeper.reset();
-		scoreBoardView.setVisible(false);
-		
-		// start the game
-		blockBoard.start();
-		ticker.setTickListener(this).setInterval(300).start();
-	}
+        log.debug("Starting new game");
+
+        // reset
+        scoreKeeper.reset();
+        scoreBoardView.setVisible(false);
+
+        // start the game
+        blockBoard.start();
+        ticker.setTickListener(this).setInterval(100).start();
+
+        entireWindow.repaint();
+    }
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
-		
+        TetrominoDropResult result = blockBoard.dropOneRow();
+        switch (result) {
+            case DROPPED:
+                boardPanel.repaint();
+                break;
+            case SET:
+                List<Integer> clearedRows = blockBoard.getCompletedRows();
+                if (!clearedRows.isEmpty()) {
+                    blockBoard.clearRows(clearedRows);
+                    scoreKeeper.clearedRows(clearedRows.size());
+                }
+                blockBoard.loadNextTetromino();
+                entireWindow.repaint();
+                break;
+        }
 	}
 
 }

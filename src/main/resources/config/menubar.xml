@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<menus size="1">
-		<menu name="Tetris" mnemonic="VK_T" size="1">
-			<!--<item name="New Game"
+		<menu name="Tetris" mnemonic="VK_T" size="2">
+			<item name="New Game"
 				mnemonic="VK_N"
 				type="JMenuItem"
-				action="com.mm.tetris.controller.actions.NewGameAction" />
-			<item name="Pause/Unpause"
+				action="com.mm.tetris.action.NewGameAction" />
+			<!-- <item name="Pause/Unpause"
 				mnemonic="VK_P"
 				type="JMenuItem"
-				action="com.mm.tetris.controller.actions.PauseAction" /> -->
+				action="com.mm.tetris.action.PauseAction" /> -->
 			<item name="Quit"
 				mnemonic="VK_Q"
 				type="JMenuItem"
@@ -19,11 +19,11 @@
 			<item name="Show High Scores"
 				mnemonic="VK_H"
 				type="JMenuItem"
-				action="com.mm.tetris.controller.actions.ShowHighScoresAction" />
+				action="com.mm.tetris.action.ShowHighScoresAction" />
 			<item name="Accelerated Left/Right"
 				mnemonic="VK_A"
 				type="JCheckBoxMenuItem"
-				action="com.mm.tetris.controller.actions.AcceleratedMotionToggleAction" />
+				action="com.mm.tetris.action.AcceleratedMotionToggleAction" />
 		</menu> -->
 	</menus>
 </config>

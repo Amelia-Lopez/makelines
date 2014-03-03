@@ -49,7 +49,8 @@ public class Ticker implements Runnable {
 		if (this.tickListener == null || this.intervalInMilliseconds.get() == 0) {
 			throw new RuntimeException("Attempting to start uninitialized ticker.");
 		}
-		
+
+        log.debug("Starting ticker");
 		shouldContinueRunning.set(true);
 		numberOfTicks = 0;
 		new Thread(this).start();
@@ -60,9 +61,11 @@ public class Ticker implements Runnable {
 	}
 	
 	public void run() {
+        log.debug("Ticker running");
 		while (shouldContinueRunning.get()) {
 			try {
-				this.tickListener.tick();
+                log.trace("Tick");
+                this.tickListener.tick();
 				numberOfTicks++;
 				
 				if (numberOfTicks > maxNumberOfTicks) {
@@ -72,10 +75,10 @@ public class Ticker implements Runnable {
 					log.warn("Number of ticks exceeded max.  Runaway ticker?\n" + stackTrace);
 					numberOfTicks = 0;
 				}
-				
+
 				Thread.sleep(this.intervalInMilliseconds.get());
-			} catch (Throwable t) {
-				log.warn("Ticker exception: ", t);
+			} catch (InterruptedException e) {
+				log.warn("Ticker exception: ", e);
 			}
 		}
 	}

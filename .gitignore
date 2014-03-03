@@ -12,6 +12,9 @@ ehthumbs.db
 .settings/
 .project
 
+# IntelliJ
+*.iml
+
 # maven built files
 target/
 
