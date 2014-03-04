@@ -55,7 +55,7 @@ public class MainWindow extends JFrame implements Paintable {
 		setJMenuBar(menuBar);
 		
 		// set up the main panel that contains all of the components
-		mainPanel.setupPanel();
+        mainPanel.setupPanel();
 		add(mainPanel);
 		
 		setVisible(true);

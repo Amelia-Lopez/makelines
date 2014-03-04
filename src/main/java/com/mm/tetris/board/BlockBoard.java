@@ -230,6 +230,96 @@ public class BlockBoard {
     }
 
     /**
+     * Move the current tetromino to the left if possible
+     */
+    public void moveCurrentTetrominoLeft() {
+        log.debug("moving piece left");
+        if (canMoveLeft()) {
+            // save a block
+            Block block = getBlockAt(fallingBlocks.get(0).getX(), fallingBlocks.get(0).getY());
+
+            // clear the current blocks
+            for (Position fallingBlock : fallingBlocks) {
+                setBlockAt(null, fallingBlock.getX(), fallingBlock.getY());
+                fallingBlock.setX(fallingBlock.getX() - 1);
+            }
+
+            // set new positions for falling blocks
+            for (Position fallingBlock : fallingBlocks) {
+                setBlockAt(block, fallingBlock.getX(), fallingBlock.getY());
+            }
+
+            // move the rotation position to the left
+            rotatePosition.setX(rotatePosition.getX() - 1);
+        }
+    }
+
+    /**
+     * Verify current tetromino can move one column to the left
+     * @return boolean true if tetromino can move left
+     */
+    private boolean canMoveLeft() {
+        for (Position fallingBlock : fallingBlocks) {
+            // check for edge of board
+            if (fallingBlock.getX() == 0)
+                return false;
+
+            // check for other blocks
+            Block nextBlock = getBlockAt(fallingBlock.getX() - 1, fallingBlock.getY());
+            if (nextBlock != null && !nextBlock.isFalling())
+                return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Move the current tetromino to the right if possible
+     */
+    public void moveCurrentTetrominoRight() {
+        log.debug("moving piece right");
+        if (canMoveRight()) {
+            // save a block
+            Block block = getBlockAt(fallingBlocks.get(0).getX(), fallingBlocks.get(0).getY());
+
+            // clear the current blocks
+            for (Position fallingBlock : fallingBlocks) {
+                setBlockAt(null, fallingBlock.getX(), fallingBlock.getY());
+                fallingBlock.setX(fallingBlock.getX() + 1);
+            }
+
+            // set new positions for falling blocks
+            for (Position fallingBlock : fallingBlocks) {
+                setBlockAt(block, fallingBlock.getX(), fallingBlock.getY());
+            }
+
+            // move the rotation position to the left
+            rotatePosition.setX(rotatePosition.getX() + 1);
+        }
+    }
+
+    /**
+     * Verify current tetromino can move one column to the right
+     * @return boolean true if tetromino can move right
+     */
+    private boolean canMoveRight() {
+        for (Position fallingBlock : fallingBlocks) {
+            // check for edge of board
+            if (fallingBlock.getX() == width - 1)
+                return false;
+
+            // check for other blocks
+            Block nextBlock = getBlockAt(fallingBlock.getX() + 1, fallingBlock.getY());
+            if (nextBlock != null && !nextBlock.isFalling())
+                return false;
+        }
+
+        return true;
+    }
+
+
+
+    /**
      * Determines if the difference between the two specified integers is 1.
      * @param x1 int
      * @param x2 int
@@ -238,13 +328,7 @@ public class BlockBoard {
     private boolean diffIsOne(int x1, int x2) {
         return (x1 - x2 == 1 || x1 - x2 == -1);
     }
-	
-	
-	
-	
-	
-	
-	
+
 	public int getWidth() {
 		return width;
 	}

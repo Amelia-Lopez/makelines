@@ -2,14 +2,16 @@
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %+20logger{20} - %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %+24logger{24} - %msg%n</pattern>
     </encoder>
   </appender>
   
   <logger name="com.mm.tetris.util" level="info"/>
-  <logger name="com.mm.tetris.gui" level="debug"/>
-  <logger name="com.mm.tetris.controller" level="debug"/>
-  <logger name="com.mm.tetris.board" level="debug"/>
+  <logger name="com.mm.tetris.gui" level="info"/>
+  <logger name="com.mm.tetris.controller" level="info"/>
+  <logger name="com.mm.tetris.controller.input" level="debug"/>
+  <logger name="com.mm.tetris.board" level="info"/>
+  <logger name="com.mm.tetris.controller.input.action.gameplay" level="trace"/>
 
   <root level="info">
     <appender-ref ref="STDOUT" />

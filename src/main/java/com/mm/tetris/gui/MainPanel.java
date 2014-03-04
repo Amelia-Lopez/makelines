@@ -1,15 +1,22 @@
 package com.mm.tetris.gui;
 
 import java.awt.Dimension;
+import java.awt.event.KeyListener;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import javax.swing.JPanel;
 
 import org.apache.commons.configuration.Configuration;
 
 import com.mm.tetris.util.ReflectionUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+@Singleton
 public class MainPanel extends JPanel {
+
+    private static Logger log = LoggerFactory.getLogger(MainPanel.class);
 
 	private static final long serialVersionUID = 7434660167829121638L;
 
@@ -38,7 +45,7 @@ public class MainPanel extends JPanel {
 		setSize(new Dimension(width, height));
 		
 		setupContents();
-	}
+    }
 	
 	/**
 	 * Populate this panel with components

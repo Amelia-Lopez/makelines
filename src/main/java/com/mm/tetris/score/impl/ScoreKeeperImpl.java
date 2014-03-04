@@ -22,16 +22,16 @@ public class ScoreKeeperImpl implements ScoreKeeper {
 
 	@Override
 	public void clearedRows(int numberOfRows) {
-		// to do
+		// todo: impl clearedRows
 	}
 
 	@Override
 	public void fastDrop(int dropHeight) {
-		// to do
+		// todo: impl fastDrop
 	}
 	
 	@Override
 	public void reset() {
-		// to do
+		// todo: impl reset
 	}
 }

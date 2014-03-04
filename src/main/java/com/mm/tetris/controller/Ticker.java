@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
-import javax.inject.Singleton;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -13,7 +11,6 @@ import org.slf4j.LoggerFactory;
 /**
  * Provides a class a tick at the specified time interval
  */
-@Singleton
 public class Ticker implements Runnable {
 	
 	private static Logger log = LoggerFactory.getLogger(Ticker.class);
@@ -23,6 +20,7 @@ public class Ticker implements Runnable {
 	private TickListener tickListener;
 	private long numberOfTicks;
 	private long maxNumberOfTicks = 1000000000;
+    private Thread thread;
 	
 	/**
 	 * Constructor
@@ -53,12 +51,18 @@ public class Ticker implements Runnable {
         log.debug("Starting ticker");
 		shouldContinueRunning.set(true);
 		numberOfTicks = 0;
-		new Thread(this).start();
+		thread = new Thread(this);
+        thread.start();
 	}
 	
 	public void stop() {
+        thread.interrupt();
 		shouldContinueRunning.set(false);
 	}
+
+    public boolean isRunning() {
+        return shouldContinueRunning.get();
+    }
 	
 	public void run() {
         log.debug("Ticker running");
@@ -78,7 +82,7 @@ public class Ticker implements Runnable {
 
 				Thread.sleep(this.intervalInMilliseconds.get());
 			} catch (InterruptedException e) {
-				log.warn("Ticker exception: ", e);
+                // do nothing
 			}
 		}
 	}

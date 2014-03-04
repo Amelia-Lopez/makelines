@@ -9,4 +9,8 @@ public interface Controller extends TickListener {
 	 * Start a new game
 	 */
 	void newGame();
+
+    void moveLeft();
+
+    void moveRight();
 }
