@@ -5,13 +5,14 @@
       <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %+24logger{24} - %msg%n</pattern>
     </encoder>
   </appender>
-  
-  <logger name="com.mm.tetris.util" level="info"/>
-  <logger name="com.mm.tetris.gui" level="info"/>
+
+  <logger name="com.mm.tetris.board" level="info"/>
   <logger name="com.mm.tetris.controller" level="info"/>
   <logger name="com.mm.tetris.controller.input" level="debug"/>
-  <logger name="com.mm.tetris.board" level="info"/>
   <logger name="com.mm.tetris.controller.input.action.gameplay" level="trace"/>
+  <logger name="com.mm.tetris.gui" level="info"/>
+  <logger name="com.mm.tetris.score.impl" level="debug"/>
+  <logger name="com.mm.tetris.util" level="info"/>
 
   <root level="info">
     <appender-ref ref="STDOUT" />

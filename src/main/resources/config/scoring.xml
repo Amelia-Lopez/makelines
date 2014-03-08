@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <scoring>
+        <cleared_rows size="4">
+            <rows number="1" score="100" />
+            <rows number="2" score="300" />
+            <rows number="3" score="600" />
+            <rows number="4" score="1000" />
+        </cleared_rows>
+        <specials size="3">
+            <special type="entireBoard" score="10000" />
+            <special type="dropRow" score="1" />
+            <special type="rowSameColor" score="500" />
+        </specials>
+    </scoring>
+</config>

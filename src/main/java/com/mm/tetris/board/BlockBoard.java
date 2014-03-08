@@ -158,6 +158,15 @@ public class BlockBoard {
     }
 
     /**
+     * Based on the specified cleared rows, was the bottom row one of them?
+     * @param clearedRows List<Integer>
+     * @return boolean true if the bottom row was cleared
+     */
+    public boolean wasBottomRowCleared(final List<Integer> clearedRows) {
+        return (clearedRows.get(clearedRows.size() - 1) == height - 1);
+    }
+
+    /**
      * Move the current tetromino to the left if possible
      */
     public void moveCurrentTetrominoLeft() {
@@ -291,6 +300,23 @@ public class BlockBoard {
                 return false;
         }
 
+        return true;
+    }
+
+    /**
+     * Checks if the entire board is clear
+     * @return boolean true if no blocks exist on the board
+     */
+    public boolean isEntireBoardClear() {
+        // start checking from the bottom since it's mostly likely to have a block
+        for (int y = height - 1; y >= 0; y--) {
+            for (int x = 0; x < width; x++) {
+                if (!isAvailablePosition(x, y))
+                    return false;
+            }
+        }
+
+        log.info("Entire board cleared!");
         return true;
     }
 

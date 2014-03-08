@@ -6,4 +6,5 @@
 	<xml fileName="tetrominos.xml" />
 	<xml fileName="textures.xml" />
     <xml fileName="gameplay.xml" />
+    <xml fileName="scoring.xml" />
 </configuration>

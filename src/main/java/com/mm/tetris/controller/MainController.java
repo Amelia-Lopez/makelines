@@ -67,6 +67,16 @@ public class MainController implements Controller, ScoreObserver {
      * Lock that should be synchronized whenever the blockBoard is being accessed
      */
     private final Object blockBoardLock = new Object();
+
+    /**
+     * Keeps track of how many rows the player manually dropped the current tetromino
+     */
+    private int rowsManuallyDropped = 0;
+
+    /**
+     * Has this class and all of its subclasses been initialized?
+     */
+    private boolean initialized = false;
 	
 	
 	/**
@@ -76,11 +86,25 @@ public class MainController implements Controller, ScoreObserver {
 		// do nothing
 	}
 
+    /**
+     * Initialize this class
+     */
+    private void init() {
+        initialized = true;
+
+        loadConfigurationSettings();
+
+        scoreKeeper.init();
+
+        scoreKeeper.addObserver(this);
+    }
+
     @Override
 	public void newGame() {
         log.debug("Starting new game");
 
-        loadConfigurationSettings();
+        if (!initialized)
+            init();
 
         // reset
         scoreKeeper.reset();
@@ -139,16 +163,29 @@ public class MainController implements Controller, ScoreObserver {
 
                 case SET:
                     List<Integer> clearedRows = blockBoard.getCompletedRows();
+
+                    // clear rows if necessary
                     if (!clearedRows.isEmpty()) {
                         blockBoard.clearRows(clearedRows);
+
+                        // special scoring situation
+                        if (blockBoard.wasBottomRowCleared(clearedRows)
+                                && blockBoard.isEntireBoardClear())
+                            scoreKeeper.clearedEntireBoard();
+
                         scoreKeeper.clearedRows(clearedRows.size());
                     }
 
+                    // determine if we can continue playing
                     if (!blockBoard.isAbleToCreateNewTetromino()) {
                         gameOver();
                     } else {
                         blockBoard.loadNextTetromino();
                     }
+
+                    // give player points for dropping the piece faster
+                    scoreKeeper.fastDrop(rowsManuallyDropped);
+                    rowsManuallyDropped = 0;
 
                     shouldRepaintWholeWindow = true;
                     skipATick = true;
@@ -170,9 +207,8 @@ public class MainController implements Controller, ScoreObserver {
      * Set the state of the game to Game Over
      */
     public void gameOver() {
-        log.info("Game over");
         ticker.stop();
-        messagePanel.displayMessage("Game Over");
+        messagePanel.showMessage("Game Over");
     }
 
     /**
@@ -202,6 +238,7 @@ public class MainController implements Controller, ScoreObserver {
     public void moveDownOneRow() {
         skipATick = true;
         dropTetrominoDownOneRow();
+        rowsManuallyDropped++;
     }
 
     /**
@@ -214,6 +251,7 @@ public class MainController implements Controller, ScoreObserver {
         // keep dropping until tetromino is set
         do {
             result = dropTetrominoDownOneRow();
+            rowsManuallyDropped++;
         } while (result == TetrominoDropResult.DROPPED);
 
     }

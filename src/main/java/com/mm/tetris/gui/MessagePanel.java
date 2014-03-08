@@ -65,7 +65,7 @@ public class MessagePanel extends BackgroundComponent implements Paintable {
      * Display message, makes this panel visible immediately
      * @param message String the message to display
      */
-    public void displayMessage(final String message) {
+    public void showMessage(final String message) {
         this.message = message;
         setVisible(true);
     }
