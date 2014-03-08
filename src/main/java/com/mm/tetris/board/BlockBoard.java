@@ -140,7 +140,7 @@ public class BlockBoard {
 
         if (isContinuousRows) {
             // start from the row above the one(s) we want to clear
-            for (int row = rows.get(0) - rows.size(); row >= 0; row--) {
+            for (int row = rows.get(rows.size() - 1) - rows.size(); row >= 0; row--) {
                 for (int col = 0; col < width; col++) {
                     setBlockAt(getBlockAt(col, row), col, row + rows.size());
                 }
