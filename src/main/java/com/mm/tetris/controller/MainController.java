@@ -121,11 +121,13 @@ public class MainController implements Controller, ScoreObserver {
 
     /**
      * Drops the tetromino down one row and sets it in place if it can't
+     * @return TetrominoDropResult if the tetromino was dropped or set in place
      */
-    private void dropTetrominoDownOneRow() {
+    private TetrominoDropResult dropTetrominoDownOneRow() {
         boolean shouldRepaintWholeWindow = false;
+        TetrominoDropResult result;
         synchronized (blockBoardLock) {
-            TetrominoDropResult result = blockBoard.dropOneRow();
+            result = blockBoard.dropOneRow();
             switch (result) {
                 case DROPPED:
                     break;
@@ -147,6 +149,8 @@ public class MainController implements Controller, ScoreObserver {
         } else {
             boardPanel.repaint();
         }
+
+        return result;
     }
 
     /**
@@ -183,7 +187,13 @@ public class MainController implements Controller, ScoreObserver {
      */
     @Override
     public void moveDownCompletely() {
-        // todo: add support to move current tetromino down completely
+        TetrominoDropResult result;
+
+        // keep dropping until tetromino is set
+        do {
+            result = dropTetrominoDownOneRow();
+        } while (result == TetrominoDropResult.DROPPED);
+
     }
 
     @Override

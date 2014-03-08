@@ -54,14 +54,14 @@ public abstract class GameplayAction extends AbstractAction implements TickListe
     public abstract void init();
 
     /**
-     * Key was pressed
+     * Key was pressed, default implementation since most actions are repeatable
      */
     public void keyPressed() {
         ticker.start();
     }
 
     /**
-     * Key was released
+     * Key was released, default implementation since most actions are repeatable
      */
     public void keyReleased() {
         ticker.stop();

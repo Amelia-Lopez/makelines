@@ -42,6 +42,7 @@ public class KeyBindings {
         keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), create(SlowDropAction.class));
         keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), create(RotateClockwiseAction.class));
         keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_SLASH, 0), create(RotateCounterClockwiseAction.class));
+        keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_PERIOD, 0), create(HardDropAction.class));
     }
 
     /**
