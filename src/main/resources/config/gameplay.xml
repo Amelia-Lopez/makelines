@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <movement>
+        <falling size="21">
+            <level value="0" delay="200" />
+            <level value="1" delay="300" />
+            <level value="2" delay="285" />
+            <level value="3" delay="270" />
+            <level value="4" delay="255" />
+            <level value="5" delay="240" />
+            <level value="6" delay="225" />
+            <level value="7" delay="210" />
+            <level value="8" delay="195" />
+            <level value="9" delay="180" />
+            <level value="10" delay="165" />
+            <level value="11" delay="150" />
+            <level value="12" delay="135" />
+            <level value="13" delay="120" />
+            <level value="14" delay="105" />
+            <level value="15" delay="90" />
+            <level value="16" delay="75" />
+            <level value="17" delay="60" />
+            <level value="18" delay="60" />
+            <level value="19" delay="60" />
+            <level value="20" delay="60" />
+        </falling>
+        <input>
+            <leftright normal="200" accelerated="160" />
+            <drop normal="40" />
+        </input>
+    </movement>
+</config>

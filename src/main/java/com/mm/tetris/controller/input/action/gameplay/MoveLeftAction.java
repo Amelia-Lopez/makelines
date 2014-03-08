@@ -3,6 +3,7 @@ package com.mm.tetris.controller.input.action.gameplay;
 import com.mm.tetris.controller.TickListener;
 import com.mm.tetris.controller.Ticker;
 import com.mm.tetris.controller.input.InputController;
+import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +15,9 @@ import javax.inject.Inject;
 public class MoveLeftAction extends GameplayAction implements TickListener {
 
     private static Logger log = LoggerFactory.getLogger(MoveLeftAction.class);
+
+    @Inject
+    private Configuration config;
 
     @Inject
     private InputController inputController;
@@ -33,8 +37,9 @@ public class MoveLeftAction extends GameplayAction implements TickListener {
      */
     @Override
     public void init() {
-        // todo: this should be configured and should consider user pref for accelerated action
-        ticker.setTickListener(this).setInterval(200L);
+        // todo: support accelerated movement
+        int delay = config.getInt("movement/input/leftright/@normal");
+        ticker.setTickListener(this).setInterval(delay);
     }
 
     /**

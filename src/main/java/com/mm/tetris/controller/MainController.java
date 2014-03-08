@@ -10,15 +10,22 @@ import com.mm.tetris.controller.input.InputController;
 import com.mm.tetris.gui.Paintable;
 import com.mm.tetris.gui.ScoreBoardView;
 import com.mm.tetris.score.ScoreKeeper;
+import com.mm.tetris.score.ScoreObserver;
+import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Singleton
-public class MainController implements Controller {
+public class MainController implements Controller, ScoreObserver {
 
     private static Logger log = LoggerFactory.getLogger(MainController.class);
+
+    @Inject
+    private Configuration config;
 	
 	@Inject
 	private BlockBoard blockBoard;
@@ -40,6 +47,11 @@ public class MainController implements Controller {
 
     @Inject
     private InputController inputController;
+
+    /**
+     * The speed the tetromino should fall based on the level.  Values are configured.
+     */
+    private Map<Integer, Integer> levelFallingSpeeds;
 
     /**
      * Will skip a tick (which just drops the tetromino down one row) in case a particular
@@ -64,6 +76,8 @@ public class MainController implements Controller {
 	public void newGame() {
         log.debug("Starting new game");
 
+        loadConfigurationSettings();
+
         // reset
         scoreKeeper.reset();
         scoreBoardView.setVisible(false);
@@ -72,12 +86,27 @@ public class MainController implements Controller {
         synchronized (blockBoardLock) {
             blockBoard.start();
         }
-        // todo: configured dropping speed
-        ticker.setTickListener(this).setInterval(300).start();
+
+        ticker.setTickListener(this).setInterval(levelFallingSpeeds.get(0)).start();
 
         inputController.init();
 
         entireWindow.repaint();
+    }
+
+    /**
+     * Load the configuration settings required for the main controller
+     */
+    private void loadConfigurationSettings() {
+        // how fast the tetromino should fall for each level
+        levelFallingSpeeds = new HashMap<>();
+        int fallingSpeedSize = config.getInt("movement/falling/@size");
+        for (int current = 1; current <= fallingSpeedSize; current++) {
+            String configPath = "movement/falling/level[" + current + "]/";
+            levelFallingSpeeds.put(
+                    config.getInt(configPath + "@value"),
+                    config.getInt(configPath + "@delay"));
+        }
     }
 
 	@Override
@@ -133,4 +162,9 @@ public class MainController implements Controller {
         boardPanel.repaint();
     }
 
+    @Override
+    public void scoreUpdate(Map<String, Integer> scoreInfo) {
+        int currentLevel = scoreInfo.get("Level");
+        ticker.setInterval(levelFallingSpeeds.get(currentLevel));
+    }
 }
