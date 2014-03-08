@@ -183,7 +183,19 @@ public class MainController implements Controller, ScoreObserver {
      */
     @Override
     public void moveDownCompletely() {
+        // todo: add support to move current tetromino down completely
+    }
 
+    @Override
+    public void rotateClockwise() {
+        blockBoard.rotateClockwise();
+        boardPanel.repaint();
+    }
+
+    @Override
+    public void rotateCounterClockwise() {
+        blockBoard.rotateCounterClockwise();
+        boardPanel.repaint();
     }
 
     @Override

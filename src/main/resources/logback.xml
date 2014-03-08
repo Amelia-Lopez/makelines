@@ -10,7 +10,7 @@
   <logger name="com.mm.tetris.gui" level="info"/>
   <logger name="com.mm.tetris.controller" level="info"/>
   <logger name="com.mm.tetris.controller.input" level="debug"/>
-  <logger name="com.mm.tetris.board" level="info"/>
+  <logger name="com.mm.tetris.board" level="debug"/>
   <logger name="com.mm.tetris.controller.input.action.gameplay" level="trace"/>
 
   <root level="info">

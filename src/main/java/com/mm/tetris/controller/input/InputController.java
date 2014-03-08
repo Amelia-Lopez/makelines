@@ -15,7 +15,7 @@ public interface InputController {
 
     void rotateClockwise();
 
-    void rotateCounterclockwise();
+    void rotateCounterClockwise();
 
     void dropOneRow();
 

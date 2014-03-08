@@ -68,17 +68,16 @@ public class Ticker implements Runnable {
         log.debug("Ticker running");
 		while (shouldContinueRunning.get()) {
 			try {
-                log.trace("Tick");
                 this.tickListener.tick();
 				numberOfTicks++;
 				
-				if (numberOfTicks > maxNumberOfTicks) {
+				/*if (numberOfTicks > maxNumberOfTicks) {
 					String stackTrace = Arrays.toString(
 							Thread.getAllStackTraces().get(Thread.currentThread()));
 					
 					log.warn("Number of ticks exceeded max.  Runaway ticker?\n" + stackTrace);
 					numberOfTicks = 0;
-				}
+				}*/
 
 				Thread.sleep(this.intervalInMilliseconds.get());
 			} catch (InterruptedException e) {

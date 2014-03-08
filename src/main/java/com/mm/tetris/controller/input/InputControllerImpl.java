@@ -42,10 +42,12 @@ public class InputControllerImpl implements InputController, KeyListener {
 
     @Override
     public void init() {
+        // use the panel to make this class handle input
         mainPanel.addKeyListener(this);
         mainPanel.requestFocusInWindow();
 
         if (!keysAreMapped) {
+            // if we haven't already, load the key bindings
             keyBindings.init();
 
             InputMap inputMap = mainPanel.getInputMap();
@@ -79,12 +81,12 @@ public class InputControllerImpl implements InputController, KeyListener {
 
     @Override
     public void rotateClockwise() {
-
+        controller.rotateClockwise();
     }
 
     @Override
-    public void rotateCounterclockwise() {
-
+    public void rotateCounterClockwise() {
+        controller.rotateCounterClockwise();
     }
 
     @Override
@@ -94,7 +96,7 @@ public class InputControllerImpl implements InputController, KeyListener {
 
     @Override
     public void dropCompletely() {
-
+        controller.moveDownCompletely();
     }
 
     @Override
@@ -112,7 +114,7 @@ public class InputControllerImpl implements InputController, KeyListener {
         Object action = keyBindings.getKeyBindings().get(
                 KeyStroke.getKeyStroke(e.getKeyCode(), e.getModifiers()));
 
-        if (action != null && action instanceof GameplayAction) {
+        if (action != null) {
             ((GameplayAction) action).stop();
         }
 

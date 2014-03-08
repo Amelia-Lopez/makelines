@@ -2,7 +2,7 @@
 <config>
     <movement>
         <falling size="21">
-            <level value="0" delay="200" />
+            <level value="0" delay="500" />
             <level value="1" delay="300" />
             <level value="2" delay="285" />
             <level value="3" delay="270" />
@@ -27,6 +27,7 @@
         <input>
             <leftright normal="200" accelerated="160" />
             <drop normal="40" />
+            <rotate normal="200" />
         </input>
     </movement>
 </config>

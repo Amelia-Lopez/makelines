@@ -4,19 +4,22 @@ import org.apache.commons.configuration.Configuration;
 
 import javax.inject.Inject;
 
-public class SlowDropAction extends GameplayAction {
+/**
+ * Input action that rotates the current tetromino counter-clockwise
+ */
+public class RotateCounterClockwiseAction extends GameplayAction {
 
     @Inject
     private Configuration config;
 
     @Override
     public void init() {
-        int delay = config.getInt("movement/input/drop/@normal");
+        int delay = config.getInt("movement/input/rotate/@normal");
         ticker.setTickListener(this).setInterval(delay);
     }
 
     @Override
     public void tick() {
-        inputController.dropOneRow();
+        inputController.rotateCounterClockwise();
     }
 }

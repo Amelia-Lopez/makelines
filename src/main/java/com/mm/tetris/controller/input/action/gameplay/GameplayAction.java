@@ -1,18 +1,28 @@
 package com.mm.tetris.controller.input.action.gameplay;
 
 
+import com.mm.tetris.controller.TickListener;
+import com.mm.tetris.controller.Ticker;
+import com.mm.tetris.controller.input.InputController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.inject.Inject;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 
 /**
  * All game play actions that are activated by a key press should extend this class
  */
-public abstract class GameplayAction extends AbstractAction {
+public abstract class GameplayAction extends AbstractAction implements TickListener {
 
     private static Logger log = LoggerFactory.getLogger(GameplayAction.class);
+
+    @Inject
+    protected Ticker ticker;
+
+    @Inject
+    protected InputController inputController;
 
     protected boolean isKeyPressed = false;
 
@@ -21,7 +31,7 @@ public abstract class GameplayAction extends AbstractAction {
      * @param e ActionEvent
      */
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public final void actionPerformed(ActionEvent e) {
         if (!isKeyPressed) {
             isKeyPressed = true;
             keyPressed();
@@ -31,23 +41,29 @@ public abstract class GameplayAction extends AbstractAction {
     /**
      * Controller should call this when it detects that the key was released
      */
-    public void stop() {
+    public final void stop() {
         isKeyPressed = false;
         keyReleased();
     }
 
     /**
-     * If the action needs to initialize anything, it should be done here
+     * If the action needs to initialize anything, it should be done here.
+     * Action should either initialize the ticker or override the keyPressed and keyReleased
+     * methods.
      */
     public abstract void init();
 
     /**
-     * Implementing class should use this to start the action
+     * Key was pressed
      */
-    public abstract void keyPressed();
+    public void keyPressed() {
+        ticker.start();
+    }
 
     /**
-     * Implementing class should use this to stop the action
+     * Key was released
      */
-    public abstract void keyReleased();
+    public void keyReleased() {
+        ticker.stop();
+    }
 }
