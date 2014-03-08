@@ -131,19 +131,27 @@ public class MainController implements Controller, ScoreObserver {
             switch (result) {
                 case DROPPED:
                     break;
+
                 case SET:
                     List<Integer> clearedRows = blockBoard.getCompletedRows();
                     if (!clearedRows.isEmpty()) {
                         blockBoard.clearRows(clearedRows);
                         scoreKeeper.clearedRows(clearedRows.size());
                     }
-                    blockBoard.loadNextTetromino();
+
+                    if (!blockBoard.isAbleToCreateNewTetromino()) {
+                        gameOver();
+                    } else {
+                        blockBoard.loadNextTetromino();
+                    }
+
                     shouldRepaintWholeWindow = true;
                     skipATick = true;
                     break;
             }
         }
 
+        // only paint what we need to
         if (shouldRepaintWholeWindow) {
             entireWindow.repaint();
         } else {
@@ -151,6 +159,14 @@ public class MainController implements Controller, ScoreObserver {
         }
 
         return result;
+    }
+
+    /**
+     * Set the state of the game to Game Over
+     */
+    public void gameOver() {
+        log.info("Game over");
+        ticker.stop();
     }
 
     /**

@@ -40,6 +40,9 @@ public class InputControllerImpl implements InputController, KeyListener {
         // do nothing
     }
 
+    /**
+     * Should be called when a new game is started
+     */
     @Override
     public void init() {
         // use the panel to make this class handle input

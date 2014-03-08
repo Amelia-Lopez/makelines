@@ -278,6 +278,23 @@ public class BlockBoard {
     }
 
     /**
+     * Determines if new tetrominos can still be created on the board.  If this method returns
+     * false, then it should be game over.
+     * @return boolean true if game can continue, false if game over
+     */
+    public boolean isAbleToCreateNewTetromino() {
+        int rowAboveTop = -1;
+
+        // verify the spawn positions are all available
+        for (int currentColumn = 0; currentColumn < width; currentColumn++) {
+            if (!isAvailablePosition(currentColumn, rowAboveTop))
+                return false;
+        }
+
+        return true;
+    }
+
+    /**
      * Determines if the specified position exists on the block board
      * @param x int
      * @param y int
