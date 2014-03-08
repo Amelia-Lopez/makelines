@@ -28,6 +28,9 @@ public class MainPanel extends JPanel {
 	
 	@Inject
 	private BlockBoardView blockBoardView;
+
+    @Inject
+    private MessagePanel messagePanel;
 	
 	/**
 	 * Set up this panel
@@ -51,11 +54,15 @@ public class MainPanel extends JPanel {
 	 * Populate this panel with components
 	 */
 	private void setupContents() {
+        // set up the message panel
+        messagePanel.init();
+        add(messagePanel);
+
 		// set up the main board of blocks
 		blockBoardView.init();
 		add(blockBoardView);
-		
-		// set up GUI components that display score info
+
+        // set up GUI components that display score info
 		String configPath = "gui/score/";
 		int numOfScoreBoxes = config.getInt(configPath + "@size");
 		for (int position = 1; position <= numOfScoreBoxes; position++) {

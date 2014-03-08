@@ -23,5 +23,10 @@
 			<position x="208" y="9" />
 		</blockboard>
 		<block length="22" />
+        <message color="black" border_color="black">
+            <dimensions width="220" height="150" />
+            <position x="209" y="146" />
+            <string color="white" height="17" />
+        </message>
 	</gui>
 </config>

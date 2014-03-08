@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import com.mm.tetris.board.BlockBoard;
 import com.mm.tetris.board.BlockBoard.TetrominoDropResult;
 import com.mm.tetris.controller.input.InputController;
+import com.mm.tetris.gui.MessagePanel;
 import com.mm.tetris.gui.Paintable;
 import com.mm.tetris.gui.ScoreBoardView;
 import com.mm.tetris.score.ScoreKeeper;
@@ -48,6 +49,9 @@ public class MainController implements Controller, ScoreObserver {
     @Inject
     private InputController inputController;
 
+    @Inject
+    private MessagePanel messagePanel;
+
     /**
      * The speed the tetromino should fall based on the level.  Values are configured.
      */
@@ -81,6 +85,7 @@ public class MainController implements Controller, ScoreObserver {
         // reset
         scoreKeeper.reset();
         scoreBoardView.setVisible(false);
+        messagePanel.hideMessage();
 
         // start the game
         synchronized (blockBoardLock) {
@@ -167,6 +172,7 @@ public class MainController implements Controller, ScoreObserver {
     public void gameOver() {
         log.info("Game over");
         ticker.stop();
+        messagePanel.displayMessage("Game Over");
     }
 
     /**
