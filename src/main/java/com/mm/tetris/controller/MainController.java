@@ -57,7 +57,7 @@ public class MainController implements Controller, ScoreObserver {
      * Will skip a tick (which just drops the tetromino down one row) in case a particular
      * event occurs
      */
-	private boolean skipATick = false;
+	private volatile boolean skipATick = false;
 
     /**
      * Lock that should be synchronized whenever the blockBoard is being accessed
@@ -72,7 +72,7 @@ public class MainController implements Controller, ScoreObserver {
 		// do nothing
 	}
 
-	@Override
+    @Override
 	public void newGame() {
         log.debug("Starting new game");
 
@@ -116,6 +116,13 @@ public class MainController implements Controller, ScoreObserver {
             return;
         }
 
+        dropTetrominoDownOneRow();
+	}
+
+    /**
+     * Drops the tetromino down one row and sets it in place if it can't
+     */
+    private void dropTetrominoDownOneRow() {
         boolean shouldRepaintWholeWindow = false;
         synchronized (blockBoardLock) {
             TetrominoDropResult result = blockBoard.dropOneRow();
@@ -140,7 +147,7 @@ public class MainController implements Controller, ScoreObserver {
         } else {
             boardPanel.repaint();
         }
-	}
+    }
 
     /**
      * Move the current tetromino to the left
@@ -160,6 +167,23 @@ public class MainController implements Controller, ScoreObserver {
             blockBoard.moveCurrentTetrominoRight();
         }
         boardPanel.repaint();
+    }
+
+    /**
+     * Manually move the tetromino down one row
+     */
+    @Override
+    public void moveDownOneRow() {
+        skipATick = true;
+        dropTetrominoDownOneRow();
+    }
+
+    /**
+     * Moves the current tetromino all the way to the bottom
+     */
+    @Override
+    public void moveDownCompletely() {
+
     }
 
     @Override

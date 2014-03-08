@@ -88,12 +88,12 @@ public class InputControllerImpl implements InputController, KeyListener {
     }
 
     @Override
-    public void startFastDropping() {
-
+    public void dropOneRow() {
+        controller.moveDownOneRow();
     }
 
     @Override
-    public void stopFastDropping() {
+    public void dropCompletely() {
 
     }
 

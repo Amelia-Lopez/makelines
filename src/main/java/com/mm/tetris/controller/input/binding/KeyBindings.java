@@ -4,6 +4,7 @@ import com.google.inject.Injector;
 import com.mm.tetris.controller.input.action.gameplay.GameplayAction;
 import com.mm.tetris.controller.input.action.gameplay.MoveLeftAction;
 import com.mm.tetris.controller.input.action.gameplay.MoveRightAction;
+import com.mm.tetris.controller.input.action.gameplay.SlowDropAction;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -41,6 +42,7 @@ public class KeyBindings {
         keyBindings = new HashMap<>();
         keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), create(MoveLeftAction.class));
         keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), create(MoveRightAction.class));
+        keyBindings.put(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), create(SlowDropAction.class));
     }
 
     /**

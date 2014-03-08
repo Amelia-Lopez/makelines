@@ -13,4 +13,8 @@ public interface Controller extends TickListener {
     void moveLeft();
 
     void moveRight();
+
+    void moveDownOneRow();
+
+    void moveDownCompletely();
 }

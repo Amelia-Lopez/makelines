@@ -17,7 +17,7 @@ public interface InputController {
 
     void rotateCounterclockwise();
 
-    void startFastDropping();
+    void dropOneRow();
 
-    void stopFastDropping();
+    void dropCompletely();
 }
