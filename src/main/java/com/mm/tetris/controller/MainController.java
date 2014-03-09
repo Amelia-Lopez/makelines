@@ -242,6 +242,15 @@ public class MainController implements Controller, ScoreObserver {
     }
 
     /**
+     * Pause the game
+     */
+    @Override
+    public void pauseGame() {
+        if (ticker.isRunning()) ticker.stop();
+        else ticker.start();
+    }
+
+    /**
      * Moves the current tetromino all the way to the bottom
      */
     @Override

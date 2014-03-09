@@ -33,6 +33,8 @@ public class InputControllerImpl implements InputController, KeyListener {
 
     private boolean keysAreMapped = false;
 
+    private boolean notPaused = true;
+
     /**
      * Constructor
      */
@@ -65,6 +67,8 @@ public class InputControllerImpl implements InputController, KeyListener {
 
             keysAreMapped = true;
         }
+
+        notPaused = true;
     }
 
     @Override
@@ -73,33 +77,39 @@ public class InputControllerImpl implements InputController, KeyListener {
     }
 
     @Override
+    public void pause() {
+        notPaused = !notPaused;
+        controller.pauseGame();
+    }
+
+    @Override
     public void moveLeft() {
-        controller.moveLeft();
+        if (notPaused) controller.moveLeft();
     }
 
     @Override
     public void moveRight() {
-        controller.moveRight();
+        if (notPaused) controller.moveRight();
     }
 
     @Override
     public void rotateClockwise() {
-        controller.rotateClockwise();
+        if (notPaused) controller.rotateClockwise();
     }
 
     @Override
     public void rotateCounterClockwise() {
-        controller.rotateCounterClockwise();
+        if (notPaused) controller.rotateCounterClockwise();
     }
 
     @Override
     public void dropOneRow() {
-        controller.moveDownOneRow();
+        if (notPaused) controller.moveDownOneRow();
     }
 
     @Override
     public void dropCompletely() {
-        controller.moveDownCompletely();
+        if (notPaused) controller.moveDownCompletely();
     }
 
     @Override

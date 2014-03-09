@@ -11,11 +11,13 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 
+import com.mm.tetris.controller.input.action.ImageMessager;
+import com.mm.tetris.util.ImageUtil;
 import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.mm.tetris.action.AbstractAction;
+import com.mm.tetris.controller.input.action.AbstractAction;
 import com.mm.tetris.util.ReflectionUtil;
 
 public class MenuBar extends JMenuBar {
@@ -29,6 +31,9 @@ public class MenuBar extends JMenuBar {
 	
 	@Inject
 	private ReflectionUtil reflectionUtil;
+
+    @Inject
+    private ImageUtil imageUtil;
 	
 	private Color backgroundColor;
 	
@@ -113,7 +118,25 @@ public class MenuBar extends JMenuBar {
 					default:
 						log.warn("Invalid configuration. Type not supported: " + itemType);
 				}
-			}
+
+                // set message if one is configured
+                String messageType = config.getString(itemConfigPath + "message/@type");
+                if (messageType != null && !messageType.isEmpty()) {
+                    switch (messageType) {
+                        // todo: add support for a string messager
+                        /*case "string":
+                            stringMessager.setMessageString(
+                                    config.getString(itemConfigPath + "message/string/@value"));
+                            break;*/
+                        case "image":
+                            ImageMessager imageMessager = (ImageMessager) action;
+                            imageMessager.setMessageImage(
+                                    imageUtil.getImageFromFile(
+                                            config.getString(itemConfigPath + "message/image/@file")));
+                            break;
+                    }
+                }
+            }
 			
 			add(menu);
 		}

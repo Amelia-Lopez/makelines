@@ -10,6 +10,8 @@ public interface Controller extends TickListener {
 	 */
 	void newGame();
 
+    void pauseGame();
+
     void moveLeft();
 
     void moveRight();

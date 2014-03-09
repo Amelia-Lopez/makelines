@@ -1,4 +1,4 @@
-package com.mm.tetris.action;
+package com.mm.tetris.controller.input.action;
 
 import javax.swing.Action;
 

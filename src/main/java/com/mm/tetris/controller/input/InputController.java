@@ -9,6 +9,8 @@ public interface InputController {
 
     void tearDown();
 
+    void pause();
+
     void moveLeft();
 
     void moveRight();

@@ -1,6 +1,7 @@
-package com.mm.tetris.action;
+package com.mm.tetris.controller.input.action;
 
 import com.mm.tetris.controller.Controller;
+import com.mm.tetris.controller.input.action.AbstractAction;
 
 import javax.inject.Inject;
 

@@ -6,6 +6,7 @@ import org.apache.commons.configuration.Configuration;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 /**
  * The panel that displays a message
@@ -40,6 +41,11 @@ public class MessagePanel extends BackgroundComponent implements Paintable {
     private String message;
 
     /**
+     * The message to display (if it's an image)
+     */
+    private BufferedImage image;
+
+    /**
      * Initialize the message view from configuration
      */
     public void init() {
@@ -70,8 +76,19 @@ public class MessagePanel extends BackgroundComponent implements Paintable {
         setVisible(true);
     }
 
+    /**
+     * Display message, makes this panel visible immediately
+     * @param image BufferedImage
+     */
+    public void showMessage(final BufferedImage image) {
+        this.image = image;
+        setVisible(true);
+    }
+
     public void hideMessage() {
         setVisible(false);
+        message = null;
+        image = null;
     }
 
     @Override
@@ -86,7 +103,8 @@ public class MessagePanel extends BackgroundComponent implements Paintable {
             for (int line = 0; line < lines.length; line++) {
                 g2.drawString(lines[line], 6, top + (line * stringHeight));
             }
+        } else if (image != null) {
+            g2.drawImage(image, 0, 0, null);
         }
-
     }
 }
