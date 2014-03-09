@@ -30,17 +30,19 @@ public class BlockBoardView extends BackgroundComponent implements Paintable, Co
 	private ReflectionUtil reflectionUtil;
 	
 	@Inject
-	private BasicBlockBoard blockBoard;
+	protected BasicBlockBoard blockBoard;
 
-    private String text;
+    protected Dimension viewDimension;
 
-    private boolean shouldPrintText = false;
+    protected String text;
 
-    private Color textColor;
+    protected boolean shouldPrintText = false;
 
-    private Position textPosition;
+    protected Color textColor;
+
+    protected Position textPosition;
 	
-	private int blockSize;
+	protected int blockSize;
 	
 	/**
 	 * Constructor
@@ -62,7 +64,7 @@ public class BlockBoardView extends BackgroundComponent implements Paintable, Co
 		int height = config.getInt(configPath + "dimensions/@height");
 		int x = config.getInt(configPath + "position/@x");
 		int y = config.getInt(configPath + "position/@y");
-		setSize(new Dimension(width, height));
+		setSize(viewDimension = new Dimension(width, height));
 		setLocation(new Point(x, y));
 
         // text
@@ -88,11 +90,6 @@ public class BlockBoardView extends BackgroundComponent implements Paintable, Co
 	 */
 	@Override
 	public void paint(Graphics2D g2) {
-        if (shouldPrintText) {
-            g2.setColor(textColor);
-            g2.drawString(text, textPosition.getX(), textPosition.getY());
-        }
-
 		for (int x = 0; x < blockBoard.getWidth(); x++) {
 			for (int y = 0; y < blockBoard.getHeight(); y++) {
 				Block block = blockBoard.getBlockAt(x, y);

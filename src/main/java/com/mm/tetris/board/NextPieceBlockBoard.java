@@ -25,17 +25,11 @@ public class NextPieceBlockBoard extends BasicBlockBoard {
         // clear the board
         super.init();
 
-        int deltaX = 1;
-        int deltaY = 1;
-        if (tetromino.getLength() == 4) {
-            deltaX = deltaY = 0;
-        }
-
         for (Position position : tetromino.getPositions()) {
             setBlockAt(
                     tetromino.getBlock(),
-                    position.getX() + deltaX,
-                    position.getY() + deltaY);
+                    position.getX(),
+                    position.getY());
         }
     }
 }
