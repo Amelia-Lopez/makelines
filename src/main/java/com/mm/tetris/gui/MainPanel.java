@@ -1,7 +1,6 @@
 package com.mm.tetris.gui;
 
-import java.awt.Dimension;
-import java.awt.event.KeyListener;
+import java.awt.*;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -31,6 +30,9 @@ public class MainPanel extends JPanel {
 
     @Inject
     private MessagePanel messagePanel;
+
+    @Inject
+    private Background background;
 	
 	/**
 	 * Set up this panel
@@ -40,18 +42,15 @@ public class MainPanel extends JPanel {
 		int width = config.getInt("gui/panel/dimensions/@width");
 		int height = config.getInt("gui/panel/dimensions/@height");
 		
-		setBackground(reflectionUtil.getColor(
-				config.getString("gui/panel/@color")));
-		
 		setOpaque(true);
 		setLayout(null);
 		setSize(new Dimension(width, height));
-		
+
 		setupContents();
     }
 	
 	/**
-	 * Populate this panel with components
+	 * Populate this panel with components, set up in order for layering
 	 */
 	private void setupContents() {
         // set up the message panel
@@ -70,5 +69,9 @@ public class MainPanel extends JPanel {
 			scoreInfoBox.setupGui(configPath + "scoreInfo[" + position + "]/");
 			add(scoreInfoBox);
 		}
-	}
+
+        // background
+        background.init();
+        add(background);
+    }
 }

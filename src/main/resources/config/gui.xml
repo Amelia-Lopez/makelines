@@ -28,5 +28,8 @@
             <position x="209" y="146" />
             <string color="white" height="17" />
         </message>
+        <background>
+            <dimensions width="640" height="460" />
+        </background>
 	</gui>
 </config>
