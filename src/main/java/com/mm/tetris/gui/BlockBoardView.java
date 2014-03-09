@@ -1,12 +1,14 @@
 package com.mm.tetris.gui;
 
-import java.awt.Dimension;
-import java.awt.Graphics2D;
-import java.awt.Point;
+import java.awt.*;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
+import com.google.inject.Injector;
+import com.mm.tetris.ConfigInitializable;
+import com.mm.tetris.board.BasicBlockBoard;
+import com.mm.tetris.board.Position;
 import org.apache.commons.configuration.Configuration;
 
 import com.mm.tetris.board.Block;
@@ -17,7 +19,7 @@ import com.mm.tetris.util.ReflectionUtil;
  * View code for the BlockBoard that uses Java2D
  */
 @Singleton
-public class BlockBoardView extends BackgroundComponent implements Paintable {
+public class BlockBoardView extends BackgroundComponent implements Paintable, ConfigInitializable {
 
 	private static final long serialVersionUID = -8889994001173750284L;
 	
@@ -28,7 +30,15 @@ public class BlockBoardView extends BackgroundComponent implements Paintable {
 	private ReflectionUtil reflectionUtil;
 	
 	@Inject
-	private BlockBoard blockBoard;
+	private BasicBlockBoard blockBoard;
+
+    private String text;
+
+    private boolean shouldPrintText = false;
+
+    private Color textColor;
+
+    private Position textPosition;
 	
 	private int blockSize;
 	
@@ -42,9 +52,7 @@ public class BlockBoardView extends BackgroundComponent implements Paintable {
 	/**
 	 * Sets up this view based on configuration values
 	 */
-	public void init() {
-		String configPath = "gui/blockboard/";
-		
+	public void init(String configPath) {
 		// color
 		backgroundColor = reflectionUtil.getColor(config.getString(configPath + "@color"));
 		borderColor = reflectionUtil.getColor(config.getString(configPath + "@border_color"));
@@ -56,8 +64,19 @@ public class BlockBoardView extends BackgroundComponent implements Paintable {
 		int y = config.getInt(configPath + "position/@y");
 		setSize(new Dimension(width, height));
 		setLocation(new Point(x, y));
-		
-		// block size
+
+        // text
+        text = config.getString(configPath + "@name");
+        shouldPrintText = config.getBoolean(configPath + "string/@show_name");
+        textColor = reflectionUtil.getColor(config.getString(configPath + "string/@color"));
+        int textX = config.getInt(configPath + "string/@x");
+        int textY = config.getInt(configPath + "string/@y");
+        textPosition = new Position(textX, textY);
+
+        // backing data model
+        blockBoard = reflectionUtil.newInstance(config.getString(configPath + "classes/@model"));
+
+        // block size
 		blockSize = config.getInt("gui/block/@length");
 		
 		// initialize data model
@@ -69,6 +88,11 @@ public class BlockBoardView extends BackgroundComponent implements Paintable {
 	 */
 	@Override
 	public void paint(Graphics2D g2) {
+        if (shouldPrintText) {
+            g2.setColor(textColor);
+            g2.drawString(text, textPosition.getX(), textPosition.getY());
+        }
+
 		for (int x = 0; x < blockBoard.getWidth(); x++) {
 			for (int y = 0; y < blockBoard.getHeight(); y++) {
 				Block block = blockBoard.getBlockAt(x, y);

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.swing.JPanel;
 
+import com.mm.tetris.ConfigInitializable;
 import org.apache.commons.configuration.Configuration;
 
 import com.mm.tetris.util.ReflectionUtil;
@@ -24,9 +25,6 @@ public class MainPanel extends JPanel {
 	
 	@Inject
 	private ReflectionUtil reflectionUtil;
-	
-	@Inject
-	private BlockBoardView blockBoardView;
 
     @Inject
     private MessagePanel messagePanel;
@@ -57,12 +55,19 @@ public class MainPanel extends JPanel {
         messagePanel.init();
         add(messagePanel);
 
-		// set up the main board of blocks
-		blockBoardView.init();
-		add(blockBoardView);
+		// set up the block boards (primary game play area and next piece display)
+        String configPath = "gui/blockboards/";
+        int numOfBlockBoards = config.getInt(configPath + "@size");
+        for (int position = 1; position <= numOfBlockBoards; position++) {
+            String boardConfigPath = configPath + "blockboard[" + position + "]/";
+            ConfigInitializable object = reflectionUtil.newInstance(
+                    config.getString(boardConfigPath + "classes/@view"));
+            object.init(boardConfigPath);
+            add((Component) object);
+        }
 
         // set up GUI components that display score info
-		String configPath = "gui/score/";
+		configPath = "gui/score/";
 		int numOfScoreBoxes = config.getInt(configPath + "@size");
 		for (int position = 1; position <= numOfScoreBoxes; position++) {
 			ScoreInfoBox scoreInfoBox = reflectionUtil.newInstance(ScoreInfoBox.class);

@@ -11,7 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-public class BlockBoard {
+public class BlockBoard extends BasicBlockBoard {
 
     private static Logger log = LoggerFactory.getLogger(BlockBoard.class);
 	
@@ -21,18 +21,9 @@ public class BlockBoard {
 	@Inject
 	private TetrominoFactory tetrominoFactory;
 
-	/**
-	 * Number of blocks
-	 */
-	private int width = 10;
-	private int height = 20;
-	private int heightPadding = 3;
-	
-	/**
-	 * The board
-	 */
-	private Block[][] board;
-	
+    @Inject
+    private NextPieceBlockBoard nextPieceBlockBoard;
+
 	/**
 	 * The four falling blocks
 	 */
@@ -59,12 +50,14 @@ public class BlockBoard {
 	 * Constructor
 	 */
 	public BlockBoard() {
-		// do nothing
+		width = 10;
+        height = 20;
+        heightPadding = 3;
 	}
 	
 	public void init() {
+        super.init();
 		tetrominoFactory.init();
-		board = new Block[width][height + heightPadding];
         rotatePosition = new Position();
 	}
 	
@@ -74,7 +67,7 @@ public class BlockBoard {
 	public void start() {
 		board = new Block[width][height + heightPadding];
         putNewPieceOnBlockBoard(tetrominoFactory.getRandomTetromino());
-		nextPiece = tetrominoFactory.getRandomTetromino();
+		loadNextPiece();
 	}
 
     /**
@@ -97,7 +90,7 @@ public class BlockBoard {
      */
     public void loadNextTetromino() {
         putNewPieceOnBlockBoard(nextPiece);
-        nextPiece = tetrominoFactory.getRandomTetromino();
+        loadNextPiece();
     }
 
     /**
@@ -460,20 +453,13 @@ public class BlockBoard {
         }
     }
 
-	public int getWidth() {
-		return width;
-	}
-	
-	public int getHeight() {
-		return height;
-	}
-	
-	public Block getBlockAt(final int x, final int y) {
-		return board[x][y + heightPadding];
-	}
+    /**
+     * Sets the next tetromino piece and updates the Next Piece Block Board
+     */
+    private void loadNextPiece() {
+        nextPiece = tetrominoFactory.getRandomTetromino();
+        nextPieceBlockBoard.setNextPiece(nextPiece);
 
-    private void setBlockAt(Block block, int x, int y) {
-        board[x][y + heightPadding] = block;
     }
 
     public static enum TetrominoDropResult {

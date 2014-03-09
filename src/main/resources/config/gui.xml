@@ -18,10 +18,6 @@
 		<menubar color="light_gray">
 			<dimensions width="640" height="20" />
 		</menubar>
-		<blockboard color="black" border_color="blue">
-			<dimensions width="222" height="442" />
-			<position x="208" y="9" />
-		</blockboard>
 		<block length="22" />
         <message color="black" border_color="black">
             <dimensions width="220" height="150" />
@@ -31,5 +27,21 @@
         <background>
             <dimensions width="640" height="460" />
         </background>
+        <blockboards size="2">
+            <blockboard name="Game Board" color="black" border_color="blue">
+                <classes model="com.mm.tetris.board.BlockBoard"
+                        view="com.mm.tetris.gui.BlockBoardView" />
+                <string show_name="false" color="yellow" x="0" y="0" />
+                <dimensions width="222" height="442" />
+                <position x="208" y="9" />
+            </blockboard>
+            <blockboard name="Next:" color="black" border_color="blue">
+                <classes model="com.mm.tetris.board.NextPieceBlockBoard"
+                        view="com.mm.tetris.gui.NextPieceView" />
+                <string show_name="true" color="yellow" x="6" y="16" />
+                <dimensions width="130" height="130" />
+                <position x="20" y="9" />
+            </blockboard>
+        </blockboards>
 	</gui>
 </config>
