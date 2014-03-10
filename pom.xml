@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.mm.tetris</groupId>
-  <artifactId>tetris-max</artifactId>
+  <artifactId>tets</artifactId>
   <packaging>jar</packaging>
-  <version>0.6.0-SNAPSHOT</version>
-  <name>tetris-max</name>
+  <version>0.6.1-SNAPSHOT</version>
+  <name>tets</name>
   <url>http://maven.apache.org</url>
   <properties>
     <java.version>1.7</java.version>
@@ -38,7 +38,7 @@
               <mainClass>com.mm.tetris.TetrisApp</mainClass>
             </manifest>
           </archive>
-		  <finalName>${project.artifactId}-${project.version}</finalName>
+		  <finalName>${project.artifactId}</finalName>
 		  <outputDirectory>${project.build.directory}/dist/bin</outputDirectory>
         </configuration>
       </plugin>
