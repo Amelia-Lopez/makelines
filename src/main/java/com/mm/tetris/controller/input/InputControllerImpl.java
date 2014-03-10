@@ -1,6 +1,6 @@
 package com.mm.tetris.controller.input;
 
-import com.mm.tetris.controller.Controller;
+import com.mm.tetris.controller.*;
 import com.mm.tetris.controller.input.action.gameplay.GameplayAction;
 import com.mm.tetris.controller.input.binding.KeyBindings;
 import com.mm.tetris.gui.MainPanel;
@@ -18,12 +18,19 @@ import java.util.Map;
  *
  */
 @Singleton
-public class InputControllerImpl implements InputController, KeyListener {
+public class InputControllerImpl
+        implements InputController, KeyListener, GameOverObserver, NewGameObserver {
 
     private static Logger log = LoggerFactory.getLogger(InputControllerImpl.class);
 
     @Inject
     private Controller controller;
+
+    @Inject
+    private GameOverInformer gameOverInformer;
+
+    @Inject
+    private NewGameInformer newGameInformer;
 
     @Inject
     private MainPanel mainPanel;
@@ -33,7 +40,7 @@ public class InputControllerImpl implements InputController, KeyListener {
 
     private boolean keysAreMapped = false;
 
-    private boolean notPaused = true;
+    private boolean isPlaying = true;
 
     /**
      * Constructor
@@ -68,7 +75,8 @@ public class InputControllerImpl implements InputController, KeyListener {
             keysAreMapped = true;
         }
 
-        notPaused = true;
+        gameOverInformer.addGameOverObserver(this);
+        newGameInformer.addNewGameObserver(this);
     }
 
     @Override
@@ -78,38 +86,38 @@ public class InputControllerImpl implements InputController, KeyListener {
 
     @Override
     public void pause() {
-        notPaused = !notPaused;
+        isPlaying = !isPlaying;
         controller.pauseGame();
     }
 
     @Override
     public void moveLeft() {
-        if (notPaused) controller.moveLeft();
+        if (isPlaying) controller.moveLeft();
     }
 
     @Override
     public void moveRight() {
-        if (notPaused) controller.moveRight();
+        if (isPlaying) controller.moveRight();
     }
 
     @Override
     public void rotateClockwise() {
-        if (notPaused) controller.rotateClockwise();
+        if (isPlaying) controller.rotateClockwise();
     }
 
     @Override
     public void rotateCounterClockwise() {
-        if (notPaused) controller.rotateCounterClockwise();
+        if (isPlaying) controller.rotateCounterClockwise();
     }
 
     @Override
     public void dropOneRow() {
-        if (notPaused) controller.moveDownOneRow();
+        if (isPlaying) controller.moveDownOneRow();
     }
 
     @Override
     public void dropCompletely() {
-        if (notPaused) controller.moveDownCompletely();
+        if (isPlaying) controller.moveDownCompletely();
     }
 
     @Override
@@ -131,5 +139,15 @@ public class InputControllerImpl implements InputController, KeyListener {
             ((GameplayAction) action).stop();
         }
 
+    }
+
+    @Override
+    public void gameOver() {
+        isPlaying = false;
+    }
+
+    @Override
+    public void newGameStarted() {
+        isPlaying = true;
     }
 }

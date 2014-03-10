@@ -13,4 +13,8 @@ public abstract class AbstractAction extends javax.swing.AbstractAction {
 	public void setMnemonic(final int mnemonic) {
 		putValue(Action.MNEMONIC_KEY, mnemonic);
 	}
+
+    public void init() {
+        // do nothing
+    }
 }

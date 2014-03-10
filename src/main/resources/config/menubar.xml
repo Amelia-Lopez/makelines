@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
 	<menus size="1">
-		<menu name="Tetris" mnemonic="VK_T" size="3">
+		<menu name="Tetris" mnemonic="VK_T" size="4">
 			<item name="New Game"
 				mnemonic="VK_N"
 				type="JMenuItem"
@@ -13,6 +13,14 @@
                 <message type="image">
                     <image file="/textures/paused.png" />
                 </message>
+            </item>
+            <item name="Abort Game"
+                 mnemonic="VK_A"
+                 type="JMenuItem"
+                 action="com.mm.tetris.controller.input.action.AbortGameAction">
+                 <message type="image">
+                     <image file="/textures/gameover.png" />
+                 </message>
             </item>
 			<item name="Quit"
 				mnemonic="VK_Q"

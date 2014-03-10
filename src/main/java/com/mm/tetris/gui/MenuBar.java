@@ -93,6 +93,7 @@ public class MenuBar extends JMenuBar {
 				int itemKeyEvent = reflectionUtil.getKeyEvent(itemMnemonic);
 				action.setName(itemName);
 				action.setMnemonic(itemKeyEvent);
+                action.init();
 				
 				switch (itemType) {
 					case "JMenuItem":

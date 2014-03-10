@@ -12,6 +12,8 @@ public interface Controller extends TickListener {
 
     void pauseGame();
 
+    void gameOver();
+
     void moveLeft();
 
     void moveRight();

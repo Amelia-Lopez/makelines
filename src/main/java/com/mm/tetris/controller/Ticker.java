@@ -39,11 +39,12 @@ public class Ticker implements Runnable {
 	 * @param milliseconds long
 	 */
 	public Ticker setInterval(final long milliseconds) {
-		this.intervalInMilliseconds.set(milliseconds);
-		return this;  // convenience
-	}
-	
-	public void start() {
+        log.debug("Setting interval to: {}", milliseconds);
+        this.intervalInMilliseconds.set(milliseconds);
+        return this;  // convenience
+    }
+
+    public void start() {
 		if (this.tickListener == null || this.intervalInMilliseconds.get() == 0) {
 			throw new RuntimeException("Attempting to start uninitialized ticker.");
 		}
@@ -56,7 +57,7 @@ public class Ticker implements Runnable {
 	}
 	
 	public void stop() {
-        thread.interrupt();
+        if (thread != null) thread.interrupt();
 		shouldContinueRunning.set(false);
 	}
 

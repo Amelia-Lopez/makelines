@@ -17,11 +17,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 @Singleton
-public class MainController implements Controller, ScoreObserver {
+public class MainController implements
+        Controller,
+        ScoreObserver,
+        NewTetrominoCreator,
+        GameOverInformer,
+        NewGameInformer {
 
     private static Logger log = LoggerFactory.getLogger(MainController.class);
 
@@ -77,9 +83,23 @@ public class MainController implements Controller, ScoreObserver {
      * Has this class and all of its subclasses been initialized?
      */
     private boolean initialized = false;
-	
-	
-	/**
+
+    /**
+     * List of observers that want to be informed when a new tetromino is created
+     */
+    private List<NewTetrominoObserver> newTetrominoObservers = new LinkedList<>();
+
+    /**
+     * List of observers that want to be informed when the game is over
+     */
+    private List<GameOverObserver> gameOverObservers = new LinkedList<>();
+
+    /**
+     * List of observers that want to be informed when a new game is started
+     */
+    private List<NewGameObserver> newGameObservers = new LinkedList<>();
+
+    /**
 	 * Constructor
 	 */
 	public MainController() {
@@ -116,9 +136,11 @@ public class MainController implements Controller, ScoreObserver {
             blockBoard.start();
         }
 
-        ticker.setTickListener(this).setInterval(levelFallingSpeeds.get(0)).start();
+        ticker.setTickListener(this).setInterval(levelFallingSpeeds.get(scoreKeeper.getLevel())).start();
 
         inputController.init();
+
+        informNewGameObservers();
 
         entireWindow.repaint();
     }
@@ -187,6 +209,8 @@ public class MainController implements Controller, ScoreObserver {
                     scoreKeeper.fastDrop(rowsManuallyDropped);
                     rowsManuallyDropped = 0;
 
+                    informNewTetrominoObservers();
+
                     shouldRepaintWholeWindow = true;
                     skipATick = true;
                     break;
@@ -208,7 +232,7 @@ public class MainController implements Controller, ScoreObserver {
      */
     public void gameOver() {
         ticker.stop();
-        messagePanel.showMessage("Game Over");
+        informGameOverObservers();
     }
 
     /**
@@ -281,5 +305,59 @@ public class MainController implements Controller, ScoreObserver {
     public void scoreUpdate(Map<String, Integer> scoreInfo) {
         int currentLevel = scoreInfo.get("Level");
         ticker.setInterval(levelFallingSpeeds.get(currentLevel));
+    }
+
+    /**
+     * Add a new tetromino observer
+     * @param observer NewTetrominoObserver
+     */
+    @Override
+    public void addNewTetrominoObserver(NewTetrominoObserver observer) {
+        newTetrominoObservers.add(observer);
+    }
+
+    /**
+     * Inform observers a new tetromino was created
+     */
+    private void informNewTetrominoObservers() {
+        for (NewTetrominoObserver observer : newTetrominoObservers) {
+            observer.newTetrominoCreated();
+        }
+    }
+
+    /**
+     * Add a game over observer
+     * @param observer GameOverObserver
+     */
+    @Override
+    public void addGameOverObserver(GameOverObserver observer) {
+        gameOverObservers.add(observer);
+    }
+
+    /**
+     * Inform observers the game is over
+     */
+    private void informGameOverObservers() {
+        for (GameOverObserver observer : gameOverObservers) {
+            observer.gameOver();
+        }
+    }
+
+    /**
+     * Add a new game observer
+     * @param observer NewGameObserver
+     */
+    @Override
+    public void addNewGameObserver(NewGameObserver observer) {
+        newGameObservers.add(observer);
+    }
+
+    /**
+     * Inform observers that a new game has started
+     */
+    private void informNewGameObservers() {
+        for (NewGameObserver observer : newGameObservers) {
+            observer.newGameStarted();
+        }
     }
 }

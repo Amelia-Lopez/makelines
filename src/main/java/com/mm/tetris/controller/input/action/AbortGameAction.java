@@ -1,24 +1,24 @@
 package com.mm.tetris.controller.input.action;
 
-import com.mm.tetris.controller.GameOverInformer;
-import com.mm.tetris.controller.GameOverObserver;
-import com.mm.tetris.controller.NewGameInformer;
-import com.mm.tetris.controller.NewGameObserver;
-import com.mm.tetris.controller.input.InputController;
+import com.mm.tetris.controller.*;
 import com.mm.tetris.gui.MessagePanel;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
 import java.awt.event.ActionEvent;
 import java.awt.image.BufferedImage;
 
 /**
- * Action that pauses the game
+ * Aborts the current game
  */
-public class PauseGameAction extends AbstractAction
+public class AbortGameAction extends AbstractAction
         implements GameOverObserver, ImageMessager, NewGameObserver {
 
+    private static Logger log = LoggerFactory.getLogger(AbortGameAction.class);
+
     @Inject
-    private InputController inputController;
+    private Controller controller;
 
     @Inject
     private GameOverInformer gameOverInformer;
@@ -29,10 +29,8 @@ public class PauseGameAction extends AbstractAction
     @Inject
     private MessagePanel messagePanel;
 
-    // image that says "Paused"
+    // image that says "Game Over"
     private BufferedImage image;
-
-    private boolean isPaused = false;
 
     @Override
     public void init() {
@@ -41,31 +39,34 @@ public class PauseGameAction extends AbstractAction
         setEnabled(false);
     }
 
+    /**
+     * Player wants to abort the game.  Inform the controller
+     * @param e ActionEvent
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
-        inputController.pause();
-
-        if (isPaused) {
-            isPaused = false;
-            messagePanel.hideMessage();
-        } else {
-            isPaused = true;
-            messagePanel.showMessage(image);
-        }
+        controller.gameOver();
     }
 
-    @Override
-    public void setMessageImage(BufferedImage image) {
-        this.image = image;
-    }
-
+    /**
+     * A game over occurred (either from losing the game or by this action being activated)
+     */
     @Override
     public void gameOver() {
+        log.info("Display image.");
+        messagePanel.showMessage(image);
         setEnabled(false);
     }
 
     @Override
+    public void setMessageImage(BufferedImage image) {
+        log.info("Setting image.");
+        this.image = image;
+    }
+
+    @Override
     public void newGameStarted() {
+        messagePanel.hideMessage();
         setEnabled(true);
     }
 }
