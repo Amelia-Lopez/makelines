@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<xml fileName="guiceModules.xml" />
-	<xml fileName="gui.xml" />
-	<xml fileName="menubar.xml" />
-	<xml fileName="tetrominos.xml" />
-	<xml fileName="textures.xml" />
+    <xml fileName="guiceModules.xml" />
+    <xml fileName="gui.xml" />
+    <xml fileName="menubar.xml" />
+    <xml fileName="tetrominos.xml" />
+    <xml fileName="textures.xml" />
     <xml fileName="gameplay.xml" />
     <xml fileName="scoring.xml" />
 </configuration>

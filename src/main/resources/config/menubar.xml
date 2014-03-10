@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<menus size="1">
-		<menu name="Tetris" mnemonic="VK_T" size="4">
-			<item name="New Game"
-				mnemonic="VK_N"
-				type="JMenuItem"
-				action="com.mm.tetris.controller.input.action.NewGameAction" />
-			<item name="Pause"
-				mnemonic="VK_P"
-				type="JMenuItem"
-				action="com.mm.tetris.controller.input.action.PauseGameAction">
+    <menus size="1">
+        <menu name="Tetris" mnemonic="VK_T" size="4">
+            <item name="New Game"
+                mnemonic="VK_N"
+                type="JMenuItem"
+                action="com.mm.tetris.controller.input.action.NewGameAction" />
+            <item name="Pause"
+                mnemonic="VK_P"
+                type="JMenuItem"
+                action="com.mm.tetris.controller.input.action.PauseGameAction">
                 <message type="image">
                     <image file="/textures/paused.png" />
                 </message>
@@ -22,20 +22,20 @@
                      <image file="/textures/gameover.png" />
                  </message>
             </item>
-			<item name="Quit"
-				mnemonic="VK_Q"
-				type="JMenuItem"
-				action="com.mm.tetris.controller.input.action.QuitAction" />
-		</menu>
-		<!--<menu name="Options" mnemonic="VK_O">
-			<item name="Show High Scores"
-				mnemonic="VK_H"
-				type="JMenuItem"
-				action="com.mm.tetris.action.ShowHighScoresAction" />
-			<item name="Accelerated Left/Right"
-				mnemonic="VK_A"
-				type="JCheckBoxMenuItem"
-				action="com.mm.tetris.action.AcceleratedMotionToggleAction" />
-		</menu> -->
-	</menus>
+            <item name="Quit"
+                mnemonic="VK_Q"
+                type="JMenuItem"
+                action="com.mm.tetris.controller.input.action.QuitAction" />
+        </menu>
+        <!--<menu name="Options" mnemonic="VK_O">
+            <item name="Show High Scores"
+                mnemonic="VK_H"
+                type="JMenuItem"
+                action="com.mm.tetris.action.ShowHighScoresAction" />
+            <item name="Accelerated Left/Right"
+                mnemonic="VK_A"
+                type="JCheckBoxMenuItem"
+                action="com.mm.tetris.action.AcceleratedMotionToggleAction" />
+        </menu> -->
+    </menus>
 </config>

@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<gui>
-		<window resizable="false">
-			<dimensions width="640" height="480" width_padding="0" height_padding="22" />
-		</window>
-		<panel color="magenta">
-			<dimensions width="640" height="460" />
-		</panel>
-		<score size="3">
-			<scoreInfo name="Score" x="487" y="25" width="96" height="60"
-				backgroundFile="/textures/components/score.png" />
-			<scoreInfo name="Level" x="487" y="125" width="96" height="60"
-				backgroundFile="/textures/components/level.png" />
-			<scoreInfo name="Rows" x="487" y="220" width="96" height="60"
-				backgroundFile="/textures/components/rows.png" />
-		</score>
-		<menubar color="light_gray">
-			<dimensions width="640" height="20" />
-		</menubar>
-		<block length="22" />
+    <gui>
+        <window resizable="false">
+            <dimensions width="640" height="480" width_padding="0" height_padding="22" />
+        </window>
+        <panel color="magenta">
+            <dimensions width="640" height="460" />
+        </panel>
+        <score size="3">
+            <scoreInfo name="Score" x="487" y="25" width="96" height="60"
+                backgroundFile="/textures/components/score.png" />
+            <scoreInfo name="Level" x="487" y="125" width="96" height="60"
+                backgroundFile="/textures/components/level.png" />
+            <scoreInfo name="Rows" x="487" y="220" width="96" height="60"
+                backgroundFile="/textures/components/rows.png" />
+        </score>
+        <menubar color="light_gray">
+            <dimensions width="640" height="20" />
+        </menubar>
+        <block length="22" />
         <message color="black" border_color="black">
             <dimensions width="220" height="110" />
             <position x="209" y="163" />
@@ -43,5 +43,5 @@
                 <position x="20" y="9" />
             </blockboard>
         </blockboards>
-	</gui>
+    </gui>
 </config>

@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-	<tetrominos size="7">
-	    <tetromino name="Z piece" length="4" color="white">
-	        <point x="2" y="1" />
-	        <point x="1" y="2" />
-	        <point x="2" y="2" />
-	        <point x="1" y="3" />
-	    </tetromino>
-	    <tetromino name="S piece" length="4" color="pink">
-	        <point x="1" y="1" />
-	        <point x="1" y="2" />
-	        <point x="2" y="2" />
-	        <point x="2" y="3" />
-	    </tetromino>
-	    <tetromino name="L piece" length="3" color="orange">
-	        <point x="1" y="0" />
-	        <point x="1" y="1" />
-	        <point x="1" y="2" />
-	        <point x="2" y="2" />
-	    </tetromino>
-	    <tetromino name="J piece" length="3" color="red">
-	        <point x="1" y="0" />
-	        <point x="1" y="1" />
-	        <point x="1" y="2" />
-	        <point x="0" y="2" />
-	    </tetromino>
-	    <tetromino name="T piece" length="3" color="green">
-	        <point x="0" y="1" />
-	        <point x="1" y="1" />
-	        <point x="2" y="1" />
-	        <point x="1" y="2" />
-	    </tetromino>
-	    <tetromino name="O piece" length="2" color="purple">
-	        <point x="0" y="0" />
-	        <point x="0" y="1" />
-	        <point x="1" y="0" />
-	        <point x="1" y="1" />
-	    </tetromino>
-	    <tetromino name="I piece" length="4" color="blue">
-	        <point x="2" y="0" />
-	        <point x="2" y="1" />
-	        <point x="2" y="2" />
-	        <point x="2" y="3" />
-	    </tetromino>
-	</tetrominos>
+    <tetrominos size="7">
+        <tetromino name="Z piece" length="4" color="white">
+            <point x="2" y="1" />
+            <point x="1" y="2" />
+            <point x="2" y="2" />
+            <point x="1" y="3" />
+        </tetromino>
+        <tetromino name="S piece" length="4" color="pink">
+            <point x="1" y="1" />
+            <point x="1" y="2" />
+            <point x="2" y="2" />
+            <point x="2" y="3" />
+        </tetromino>
+        <tetromino name="L piece" length="3" color="orange">
+            <point x="1" y="0" />
+            <point x="1" y="1" />
+            <point x="1" y="2" />
+            <point x="2" y="2" />
+        </tetromino>
+        <tetromino name="J piece" length="3" color="red">
+            <point x="1" y="0" />
+            <point x="1" y="1" />
+            <point x="1" y="2" />
+            <point x="0" y="2" />
+        </tetromino>
+        <tetromino name="T piece" length="3" color="green">
+            <point x="0" y="1" />
+            <point x="1" y="1" />
+            <point x="2" y="1" />
+            <point x="1" y="2" />
+        </tetromino>
+        <tetromino name="O piece" length="2" color="purple">
+            <point x="0" y="0" />
+            <point x="0" y="1" />
+            <point x="1" y="0" />
+            <point x="1" y="1" />
+        </tetromino>
+        <tetromino name="I piece" length="4" color="blue">
+            <point x="2" y="0" />
+            <point x="2" y="1" />
+            <point x="2" y="2" />
+            <point x="2" y="3" />
+        </tetromino>
+    </tetrominos>
 </config>
