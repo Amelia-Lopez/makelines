@@ -2,6 +2,9 @@ Tets
 ====
 Yet Another Tetris Clone
 
+Game is still in alpha.  Art assets are not final.
+![Screenshot](screenshot.png "Screenshot")
+
 Building
 ========
 To build, run:
