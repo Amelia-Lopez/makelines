@@ -53,14 +53,12 @@ public class AbortGameAction extends AbstractAction
      */
     @Override
     public void gameOver() {
-        log.info("Display image.");
         messagePanel.showMessage(image);
         setEnabled(false);
     }
 
     @Override
     public void setMessageImage(BufferedImage image) {
-        log.info("Setting image.");
         this.image = image;
     }
 
