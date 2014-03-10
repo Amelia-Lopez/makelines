@@ -5,10 +5,12 @@ Yet Another Tetris Clone
 Building
 ========
 To build, run:
-   mvn clean package
+
+`mvn clean package`
 
 Running
 =======
 To run the game, run:
-   java -jar target/dist/bin/tets.jar
+
+`java -jar target/dist/bin/tets.jar`
 
