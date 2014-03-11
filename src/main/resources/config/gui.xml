@@ -28,7 +28,7 @@
             <dimensions width="640" height="460" />
         </background>
         <blockboards size="2">
-            <blockboard name="Game Board" color="black" border_color="white">
+            <blockboard name="Game Board" color="black" border_color="black">
                 <classes model="com.mm.tetris.board.BlockBoard"
                         view="com.mm.tetris.gui.BlockBoardView" />
                 <string show_name="false" color="yellow" x="0" y="0" />

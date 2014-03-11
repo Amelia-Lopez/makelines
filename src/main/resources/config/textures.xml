@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <textures>
-        <blocks default="solid">
+        <blocks default="swirl">
             <solid path="/textures/pieces/solid/" size="7">
                 <block color="blue" file="blue.png" />
                 <block color="green" file="green.png" />
@@ -11,6 +11,15 @@
                 <block color="red" file="red.png" />
                 <block color="white" file="white.png" />
             </solid>
+            <swirl path="/textures/pieces/swirl/" size="7">
+                <block color="blue" file="swirl_blue.png" />
+                <block color="green" file="swirl_green.png" />
+                <block color="orange" file="swirl_orange.png" />
+                <block color="pink" file="swirl_pink.png" />
+                <block color="purple" file="swirl_purple.png" />
+                <block color="red" file="swirl_red.png" />
+                <block color="white" file="swirl_yellow.png" />
+            </swirl>
         </blocks>
         <backgrounds default="normal">
             <normal path="/textures/background/" size="10">
