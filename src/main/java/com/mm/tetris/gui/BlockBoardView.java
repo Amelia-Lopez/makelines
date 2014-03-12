@@ -90,6 +90,9 @@ public class BlockBoardView extends BackgroundComponent implements Paintable, Co
 	 */
 	@Override
 	public void paint(Graphics2D g2) {
+        // don't draw on the border
+        g2.translate(1, 1);
+
 		for (int x = 0; x < blockBoard.getWidth(); x++) {
 			for (int y = 0; y < blockBoard.getHeight(); y++) {
 				Block block = blockBoard.getBlockAt(x, y);
