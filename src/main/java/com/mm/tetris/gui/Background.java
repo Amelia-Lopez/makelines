@@ -44,13 +44,15 @@ public class Background extends JComponent implements ScoreObserver {
 
         // load backgrounds
         backgrounds = new LinkedHashMap<>();
-        String basePath = config.getString("textures/backgrounds/normal/@path");
-        int backgroundsSize = config.getInt("textures/backgrounds/normal/@size");
+        String backgroundSection = config.getString("textures/backgrounds/@default");
+        String backgroundConfigPath = "textures/backgrounds/" + backgroundSection + "/";
+        String basePath = config.getString(backgroundConfigPath + "@path");
+        int backgroundsSize = config.getInt(backgroundConfigPath + "@size");
         for (int backgroundNum = 1; backgroundNum <= backgroundsSize; backgroundNum++) {
-            String backgroundConfigPath = "textures/backgrounds/normal/background[" + backgroundNum + "]/";
-            String path = basePath + config.getString(backgroundConfigPath + "@file");
+            String backgroundImageConfigPath = backgroundConfigPath + "background[" + backgroundNum + "]/";
+            String path = basePath + config.getString(backgroundImageConfigPath + "@file");
             backgrounds.put(
-                    config.getInt(backgroundConfigPath + "@level"),
+                    config.getInt(backgroundImageConfigPath + "@level"),
                     imageUtil.getImageFromFile(path, width, height));
         }
 

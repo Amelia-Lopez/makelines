@@ -7,4 +7,5 @@
     <xml fileName="textures.xml" />
     <xml fileName="gameplay.xml" />
     <xml fileName="scoring.xml" />
+    <xml fileName="audio.xml" />
 </configuration>

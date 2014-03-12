@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
     <textures>
-        <blocks default="swirl">
+        <blocks default="metal">
             <solid path="/textures/pieces/solid/" size="7">
                 <block color="blue" file="blue.png" />
                 <block color="green" file="green.png" />
@@ -20,9 +20,27 @@
                 <block color="red" file="swirl_red.png" />
                 <block color="white" file="swirl_yellow.png" />
             </swirl>
+            <faces path="/textures/pieces/faces/" size="7">
+                <block color="blue" file="blue.png" />
+                <block color="green" file="green.png" />
+                <block color="orange" file="orange.png" />
+                <block color="pink" file="pink.png" />
+                <block color="purple" file="purple.png" />
+                <block color="red" file="red.png" />
+                <block color="white" file="white.png" />
+            </faces>
+            <metal path="/textures/pieces/metal/" size="7">
+                <block color="blue" file="blue.png" />
+                <block color="green" file="green.png" />
+                <block color="orange" file="teal.png" />
+                <block color="pink" file="pink.png" />
+                <block color="purple" file="purple.png" />
+                <block color="red" file="red.png" />
+                <block color="white" file="white.png" />
+            </metal>
         </blocks>
-        <backgrounds default="normal">
-            <normal path="/textures/background/" size="10">
+        <backgrounds default="single">
+            <normal path="/textures/background/normal/" size="10">
                 <background level="1" file="level1.png" />
                 <background level="2" file="level2.png" />
                 <background level="3" file="level3.png" />
@@ -34,6 +52,9 @@
                 <background level="9" file="level9.png" />
                 <background level="10" file="level10.png" />
             </normal>
+            <single path="/textures/background/" size="1">
+                <background level="1" file="pavingstone_0.png" />
+            </single>
         </backgrounds>
     </textures>
 </config>

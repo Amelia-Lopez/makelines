@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <audio>
+        <music default="blue_space" path="/audio/">
+            <song title="blue_space" filename="Blue Space v0_95.mp3" />
+        </music>
+    </audio>
+</config>

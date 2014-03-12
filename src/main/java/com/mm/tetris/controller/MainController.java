@@ -4,6 +4,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
+import com.mm.tetris.audio.AudioPlayer;
 import com.mm.tetris.board.BlockBoard;
 import com.mm.tetris.board.BlockBoard.TetrominoDropResult;
 import com.mm.tetris.controller.input.InputController;
@@ -57,6 +58,9 @@ public class MainController implements
 
     @Inject
     private MessagePanel messagePanel;
+
+    @Inject
+    private AudioPlayer audioPlayer;
 
     /**
      * The speed the tetromino should fall based on the level.  Values are configured.
@@ -117,6 +121,8 @@ public class MainController implements
         scoreKeeper.init();
 
         scoreKeeper.addObserver(this);
+
+        audioPlayer.init();
     }
 
     @Override
@@ -125,6 +131,8 @@ public class MainController implements
 
         if (!initialized)
             init();
+
+        audioPlayer.play();
 
         // reset
         scoreKeeper.reset();
@@ -143,6 +151,15 @@ public class MainController implements
         informNewGameObservers();
 
         entireWindow.repaint();
+    }
+
+    /**
+     * Set the state of the game to Game Over
+     */
+    public void gameOver() {
+        ticker.stop();
+        audioPlayer.stop();
+        informGameOverObservers();
     }
 
     /**
@@ -228,14 +245,6 @@ public class MainController implements
     }
 
     /**
-     * Set the state of the game to Game Over
-     */
-    public void gameOver() {
-        ticker.stop();
-        informGameOverObservers();
-    }
-
-    /**
      * Move the current tetromino to the left
      */
     public void moveLeft() {
@@ -270,8 +279,13 @@ public class MainController implements
      */
     @Override
     public void pauseGame() {
-        if (ticker.isRunning()) ticker.stop();
-        else ticker.start();
+        if (ticker.isRunning()) {
+            ticker.stop();
+            audioPlayer.pause();
+        } else {
+            ticker.start();
+            audioPlayer.play();
+        }
     }
 
     /**
