@@ -43,6 +43,7 @@
         </configuration>
       </plugin>
 	  <plugin>
+        <!-- Move libraries to a directory accessible from the JAR -->
 	    <groupId>org.apache.maven.plugins</groupId>
 	    <artifactId>maven-dependency-plugin</artifactId>
 	    <executions>
@@ -58,6 +59,24 @@
           </execution>
         </executions>
 	  </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>osxappbundle-maven-plugin</artifactId>
+        <version>1.0-alpha-2</version>
+        <configuration>
+          <mainClass>com.mm.tetris.TetrisApp</mainClass>
+          <iconFile>${basedir}/build-resources/osx/icons/icon_256.icns</iconFile>
+          <jvmVersion>1.7+</jvmVersion>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>bundle</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
