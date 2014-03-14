@@ -194,8 +194,10 @@ public class MainController implements
     private TetrominoDropResult dropTetrominoDownOneRow() {
         boolean shouldRepaintWholeWindow = false;
         TetrominoDropResult result;
+
         synchronized (blockBoardLock) {
             result = blockBoard.dropOneRow();
+
             switch (result) {
                 case DROPPED:
                     break;
@@ -305,13 +307,17 @@ public class MainController implements
 
     @Override
     public void rotateClockwise() {
-        blockBoard.rotateClockwise();
+        synchronized (blockBoardLock) {
+            blockBoard.rotateClockwise();
+        }
         boardPanel.repaint();
     }
 
     @Override
     public void rotateCounterClockwise() {
-        blockBoard.rotateCounterClockwise();
+        synchronized (blockBoardLock) {
+            blockBoard.rotateCounterClockwise();
+        }
         boardPanel.repaint();
     }
 
