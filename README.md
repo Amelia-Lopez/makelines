@@ -1,19 +1,43 @@
-Tets
-====
+# Tets
 Yet Another Tetris Clone
-
-Game is still in alpha.  Art assets are not final.
+  
+Game is currently in alpha.  Art assets are not final.  
 ![Screenshot](screenshot.png "Screenshot")
 
-Building
-========
-To build, run:
+# Running the game
 
-`mvn clean package`
+## Build the source code
+To build the source code, run the appropriate command for your OS.
 
-Running
-=======
-To run the game, run:
+### Mac/Linux
 
-`java -jar target/dist/bin/tets.jar`
+```bash
+./gradlew clean build
+```
 
+### Windows
+
+```bash
+./gradlew.bat clean build
+```
+
+## Launch the application
+After building the source code, you can run the game using the appropriate command for your OS.
+
+### Mac
+
+```bash
+open build/macApp/tets.app
+```
+
+### Linux
+
+```bash
+./gradlew run
+```
+
+### Windows
+
+```bash
+./gradlew.bat run
+```
