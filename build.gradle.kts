@@ -1,4 +1,5 @@
 import org.gradle.api.JavaVersion.VERSION_1_7
+import org.gradle.jvm.tasks.Jar
 
 plugins {
     application                                            // includes java plugin, easier to execute during testing
@@ -14,6 +15,17 @@ allprojects {
 java {
     sourceCompatibility = VERSION_1_7
     targetCompatibility = VERSION_1_7
+}
+
+val jar: Jar by tasks
+jar.apply {
+    manifest.attributes.apply {
+        put("Implementation-Title", "Tets")
+        put("Implementation-Version", version)
+        put("Built-By", System.getProperty("user.name"))
+        put("Build-Jdk", org.gradle.internal.jvm.Jvm.current())
+        put("Created-By", "Gradle ${project.gradle.gradleVersion}")
+    }
 }
 
 repositories {
