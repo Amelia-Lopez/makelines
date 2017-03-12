@@ -2,18 +2,18 @@
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %+28logger{28} - %msg%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} %-5level [%thread] %+36logger{36} - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <logger name="com.mm.tetris.audio" level="debug"/>
-  <logger name="com.mm.tetris.board" level="info"/>
-  <logger name="com.mm.tetris.controller" level="info"/>
-  <logger name="com.mm.tetris.controller.input" level="info"/>
-  <logger name="com.mm.tetris.controller.input.action.gameplay" level="info"/>
-  <logger name="com.mm.tetris.gui" level="info"/>
-  <logger name="com.mm.tetris.score.impl" level="info"/>
-  <logger name="com.mm.tetris.util" level="info"/>
+  <logger name="com.mariolopezjr.tetris.audio" level="debug"/>
+  <logger name="com.mariolopezjr.tetris.board" level="info"/>
+  <logger name="com.mariolopezjr.tetris.controller" level="info"/>
+  <logger name="com.mariolopezjr.tetris.controller.input" level="info"/>
+  <logger name="com.mariolopezjr.tetris.controller.input.action.gameplay" level="info"/>
+  <logger name="com.mariolopezjr.tetris.gui" level="info"/>
+  <logger name="com.mariolopezjr.tetris.score.impl" level="info"/>
+  <logger name="com.mariolopezjr.tetris.util" level="info"/>
 
   <root level="info">
     <appender-ref ref="STDOUT" />
