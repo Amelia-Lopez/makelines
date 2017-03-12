@@ -4,7 +4,7 @@ plugins {
     id "edu.sc.seis.macAppBundle" version "2.1.6"         // creates an OS X bundle
 }
 
-group "com.mm.tetris"
+group "com.mariolopezjr"
 version "0.7.0-SNAPSHOT"
 
 sourceCompatibility = 1.7
@@ -15,7 +15,7 @@ repositories {
 }
 
 // application plugin
-mainClassName = "com.mm.tetris.TetrisApp"
+mainClassName = "com.mariolopezjr.tetris.TetrisApp"
 
 macAppBundle {
     mainClassName = project.mainClassName
