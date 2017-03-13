@@ -32,8 +32,7 @@ repositories {
     mavenCentral()
 }
 
-var mainClassNameProp: String by extra
-mainClassNameProp = "com.mariolopezjr.tetris.TetrisApp"
+val mainClassNameProp = "com.mariolopezjr.tetris.TetrisApp"
 
 application {
     mainClassName = mainClassNameProp
