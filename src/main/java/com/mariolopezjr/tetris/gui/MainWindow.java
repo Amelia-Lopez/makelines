@@ -30,7 +30,7 @@ public class MainWindow extends JFrame implements Paintable {
 	 * Constructor
 	 */
 	public MainWindow() {
-		super("Tets");
+		super("NewTetris");
 	}
 	
 	/**

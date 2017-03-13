@@ -9,7 +9,7 @@ plugins {
 
 allprojects {
     group = "com.mariolopezjr"
-    version = "0.7.0-SNAPSHOT"
+    version = "0.8.0-SNAPSHOT"
 }
 
 java {
@@ -20,7 +20,7 @@ java {
 val jar: Jar by tasks
 jar.apply {
     manifest.attributes.apply {
-        put("Implementation-Title", "Tets")
+        put("Implementation-Title", "NewTetris")
         put("Implementation-Version", version)
         put("Built-By", System.getProperty("user.name"))
         put("Build-Jdk", org.gradle.internal.jvm.Jvm.current())
@@ -32,8 +32,7 @@ repositories {
     mavenCentral()
 }
 
-var mainClassNameProp: String by extra
-mainClassNameProp = "com.mariolopezjr.tetris.TetrisApp"
+val mainClassNameProp = "com.mariolopezjr.tetris.TetrisApp"
 
 application {
     mainClassName = mainClassNameProp

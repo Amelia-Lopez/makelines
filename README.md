@@ -1,4 +1,4 @@
-# Tets
+# NewTetris
 Yet Another Tetris Clone
   
 Game is currently in alpha.  Art assets are not final.  
@@ -27,7 +27,7 @@ After building the source code, you can run the game using the appropriate comma
 ### Mac
 
 ```bash
-open build/macApp/tets.app
+open build/macApp/newtetris.app
 ```
 
 ### Linux
