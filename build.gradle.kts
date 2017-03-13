@@ -20,7 +20,7 @@ java {
 val jar: Jar by tasks
 jar.apply {
     manifest.attributes.apply {
-        put("Implementation-Title", "Tets")
+        put("Implementation-Title", "NewTetris")
         put("Implementation-Version", version)
         put("Built-By", System.getProperty("user.name"))
         put("Build-Jdk", org.gradle.internal.jvm.Jvm.current())
