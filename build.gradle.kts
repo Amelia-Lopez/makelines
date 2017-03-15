@@ -9,7 +9,7 @@ plugins {
 
 allprojects {
     group = "com.mariolopezjr"
-    version = "0.8.0-SNAPSHOT"
+    version = "0.9.0-SNAPSHOT"
 }
 
 java {
@@ -20,7 +20,7 @@ java {
 val jar: Jar by tasks
 jar.apply {
     manifest.attributes.apply {
-        put("Implementation-Title", "NewTetris")
+        put("Implementation-Title", "Make Lines")
         put("Implementation-Version", version)
         put("Built-By", System.getProperty("user.name"))
         put("Build-Jdk", org.gradle.internal.jvm.Jvm.current())
