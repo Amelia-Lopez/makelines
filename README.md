@@ -1,5 +1,7 @@
 # Make Lines
 
+[![Build Status](https://travis-ci.org/Mario-Lopez/makelines.svg?branch=master)](https://travis-ci.org/Mario-Lopez/makelines)
+
 ### You Must Make Some Lines
 
 #### With Blocks
