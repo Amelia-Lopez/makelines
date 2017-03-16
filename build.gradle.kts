@@ -66,5 +66,5 @@ dependencies {
     compile("ch.qos.logback:logback-classic:1.0.13")
     compile("org.slf4j:slf4j-api:1.7.5")
 
-    testCompile("junit:junit:3.8.1")
+    testCompile("junit:junit:4.12")
 }
