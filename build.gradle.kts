@@ -1,4 +1,4 @@
-import org.gradle.api.JavaVersion.VERSION_1_7
+import org.gradle.api.JavaVersion.VERSION_1_8
 import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
@@ -16,8 +16,8 @@ allprojects {
 }
 
 java {
-    sourceCompatibility = VERSION_1_7
-    targetCompatibility = VERSION_1_7
+    sourceCompatibility = VERSION_1_8
+    targetCompatibility = VERSION_1_8
 }
 
 val jar: Jar by tasks
