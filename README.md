@@ -1,6 +1,7 @@
 # Make Lines
 
 [![Build Status](https://travis-ci.org/Mario-Lopez/makelines.svg?branch=master)](https://travis-ci.org/Mario-Lopez/makelines)
+[![Coverage Status](https://coveralls.io/repos/github/Mario-Lopez/makelines/badge.svg?branch=master)](https://coveralls.io/github/Mario-Lopez/makelines?branch=master)
 
 ### You Must Make Some Lines
 
