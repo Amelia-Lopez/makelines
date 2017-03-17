@@ -7,13 +7,23 @@ import spock.lang.Specification
  */
 class TickerSpec extends Specification {
 
+    Ticker ticker
+
     def tickerListener = Mock(TickListener)
+
+    def setup() {
+        ticker = new Ticker()
+        ticker.setTickListener(tickerListener)
+    }
+
+    def cleanup() {
+        ticker.stop()
+    }
 
     def "should call tick() immediately after starting ticker"() {
         given: "the ticker interval is 10 seconds"
         def intervalInMillis = 10_000
-        def ticker = new Ticker()
-        ticker.setInterval(intervalInMillis).setTickListener(tickerListener)
+        ticker.setInterval(intervalInMillis)
 
         when: "the ticker is started"
         ticker.start()
@@ -23,16 +33,12 @@ class TickerSpec extends Specification {
 
         then: "the ticker listener's tick() was called once"
         1 * tickerListener.tick()
-
-        cleanup:
-        ticker.stop()
     }
 
     def "should call tick() after the set interval"() {
         given: "the ticker interval is 1 second"
         def intervalInMillis = 1_000
-        def ticker = new Ticker()
-        ticker.setInterval(intervalInMillis).setTickListener(tickerListener)
+        ticker.setInterval(intervalInMillis)
 
         when: "the ticker is started"
         ticker.start()
@@ -42,16 +48,12 @@ class TickerSpec extends Specification {
 
         then: "the ticker listener's tick() was called twice, once immediately and once more after the interval"
         2 * tickerListener.tick()
-
-        cleanup:
-        ticker.stop()
     }
 
     def "should call tick() twice more after the interval has passed twice"() {
         given: "the ticker interval is 1 second"
         def intervalInMillis = 1_000
-        def ticker = new Ticker()
-        ticker.setInterval(intervalInMillis).setTickListener(tickerListener)
+        ticker.setInterval(intervalInMillis)
 
         when: "the ticker is started"
         ticker.start()
@@ -61,16 +63,12 @@ class TickerSpec extends Specification {
 
         then: "the ticker listener's tick() was called three times in total, once immediately and then twice more"
         3 * tickerListener.tick()
-
-        cleanup:
-        ticker.stop()
     }
 
     def "should never call tick() if ticker is never started"() {
         given: "the ticker interval is 1 second"
         def intervalInMillis = 1_000
-        def ticker = new Ticker()
-        ticker.setInterval(intervalInMillis).setTickListener(tickerListener)
+        ticker.setInterval(intervalInMillis)
 
         when: "test waits for 1.5 seconds"
         sleep(1_500)
@@ -82,8 +80,7 @@ class TickerSpec extends Specification {
     def "should stop calling tick() after ticker is stopped"() {
         given: "the ticker interval is 1 second"
         def intervalInMillis = 1_000
-        def ticker = new Ticker()
-        ticker.setInterval(intervalInMillis).setTickListener(tickerListener)
+        ticker.setInterval(intervalInMillis)
 
         when: "the ticker is started"
         ticker.start()
