@@ -37,8 +37,7 @@ public class ReflectionUtil {
             return (T) injector.getInstance(Class.forName(className));
         } catch (ClassNotFoundException e) {
             log.error("Invalid configuration", e);
-            System.exit(1);
-            return null;
+            throw new Error("Unable to create new instance of class with name [" + className + "]", e);
         }
     }
 
@@ -62,8 +61,7 @@ public class ReflectionUtil {
         } catch (IllegalArgumentException | IllegalAccessException
                 | NoSuchFieldException | SecurityException e) {
             log.error("Invalid configuration.", e);
-            System.exit(1);
-            return 0;
+            throw new Error("Unable to get KeyEvent with name [" + keyEventName + "]", e);
         }
     }
 
@@ -75,14 +73,14 @@ public class ReflectionUtil {
      */
     @SuppressWarnings("unchecked")
     private <T> T getField(final String fieldName, final Class<T> klass) {
-        T field = null;
+        T field;
 
         try {
             field = (T) klass.getField(fieldName.toUpperCase()).get(null);
         } catch (IllegalArgumentException | IllegalAccessException
                 | NoSuchFieldException | SecurityException e) {
             log.error("Invalid configuration.", e);
-            System.exit(1);
+            throw new Error("Unable to get field with name [" + fieldName + "] for class with name [" + klass + "]", e);
         }
 
         return field;
