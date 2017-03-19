@@ -59,7 +59,7 @@ public class ReflectionUtil {
         try {
             return KeyEvent.class.getField(keyEventName.toUpperCase()).getInt(null);
         } catch (IllegalArgumentException | IllegalAccessException
-                | NoSuchFieldException | SecurityException e) {
+                | NoSuchFieldException | SecurityException | NullPointerException e) {
             log.error("Invalid configuration.", e);
             throw new Error("Unable to get KeyEvent with name [" + keyEventName + "]", e);
         }
@@ -78,7 +78,7 @@ public class ReflectionUtil {
         try {
             field = (T) klass.getField(fieldName.toUpperCase()).get(null);
         } catch (IllegalArgumentException | IllegalAccessException
-                | NoSuchFieldException | SecurityException e) {
+                | NoSuchFieldException | SecurityException | NullPointerException e) {
             log.error("Invalid configuration.", e);
             throw new Error("Unable to get field with name [" + fieldName + "] for class with name [" + klass + "]", e);
         }
