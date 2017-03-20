@@ -1,4 +1,4 @@
-import org.gradle.api.JavaVersion.VERSION_1_8
+import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
@@ -15,9 +15,14 @@ allprojects {
     version = "0.9.0-SNAPSHOT"
 }
 
-java {
-    sourceCompatibility = VERSION_1_8
-    targetCompatibility = VERSION_1_8
+(getTasksByName("compileJava", false).first() as JavaCompile).apply {
+    sourceCompatibility = JavaVersion.VERSION_1_7.toString()
+    targetCompatibility = JavaVersion.VERSION_1_7.toString()
+}
+
+(getTasksByName("compileTestJava", false).first() as JavaCompile).apply {
+    sourceCompatibility = JavaVersion.VERSION_1_8.toString()
+    targetCompatibility = JavaVersion.VERSION_1_8.toString()
 }
 
 val jar: Jar by tasks
