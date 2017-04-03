@@ -3,6 +3,7 @@ import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
+    groovy
     application                                            // includes java plugin, easier to execute during testing
     jacoco                                                 // code coverage
     id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
@@ -67,4 +68,6 @@ dependencies {
     compile("org.slf4j:slf4j-api:1.7.5")
 
     testCompile("junit:junit:4.12")
+    testCompile("org.codehaus.groovy:groovy-all:2.4.9")
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
 }
