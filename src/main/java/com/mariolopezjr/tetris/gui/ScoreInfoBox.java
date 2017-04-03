@@ -23,61 +23,61 @@ import com.mariolopezjr.tetris.util.ImageUtil;
  */
 public class ScoreInfoBox extends BackgroundComponent implements ScoreObserver {
 
-	private static final long serialVersionUID = -4365114241690182039L;
-	
-	private static Logger log = LoggerFactory.getLogger(ScoreInfoBox.class);
-	
-	@Inject
-	private ScoreKeeper scoreKeeper;
-	
-	@Inject
-	private Configuration config;
-	
-	@Inject
-	private ImageUtil imageUtil;
-	
-	private BufferedImage backgroundImage;
-	
-	private String label;
-	
-	private String data = "0";
-	
-	/**
-	 * Set up this graphical component
-	 * @param configPath String the base path to the config for this instance
-	 */
-	public void setupGui(String configPath) {
-		// load config values
-		int posX = config.getInt(configPath + "@x");
-		int posY = config.getInt(configPath + "@y");
-		int width = config.getInt(configPath + "@width");
-		int height = config.getInt(configPath + "@height");
-		label = config.getString(configPath + "@name");
-		String backgroundFileName = config.getString(configPath + "@backgroundFile");
-		
-		backgroundImage = imageUtil.getImageFromFile(backgroundFileName);
-		
-		setSize(new Dimension(width, height));
-		setLocation(new Point(posX, posY));
-		backgroundColor = Color.DARK_GRAY;
-		borderColor = Color.WHITE;
-		
-		// set up class as observer so it will be updated when the score data changes
-		scoreKeeper.addObserver(this);
-	}
+    private static final long serialVersionUID = -4365114241690182039L;
 
-	@Override
-	public void paint(Graphics2D g2) {
-		// draw the background texture image
-		g2.drawImage(backgroundImage, 0, 0, this);
-		
-		// draw the text
-		g2.setColor(Color.BLACK);
-		g2.drawString(data, 30, 47);
-	}
+    private static Logger log = LoggerFactory.getLogger(ScoreInfoBox.class);
 
-	@Override
-	public void scoreUpdate(Map<String, Integer> scoreInfo) {
-		data = scoreInfo.get(label).toString();
-	}
+    @Inject
+    private ScoreKeeper scoreKeeper;
+
+    @Inject
+    private Configuration config;
+
+    @Inject
+    private ImageUtil imageUtil;
+
+    private BufferedImage backgroundImage;
+
+    private String label;
+
+    private String data = "0";
+
+    /**
+     * Set up this graphical component
+     * @param configPath String the base path to the config for this instance
+     */
+    public void setupGui(String configPath) {
+        // load config values
+        int posX = config.getInt(configPath + "@x");
+        int posY = config.getInt(configPath + "@y");
+        int width = config.getInt(configPath + "@width");
+        int height = config.getInt(configPath + "@height");
+        label = config.getString(configPath + "@name");
+        String backgroundFileName = config.getString(configPath + "@backgroundFile");
+
+        backgroundImage = imageUtil.getImageFromFile(backgroundFileName);
+
+        setSize(new Dimension(width, height));
+        setLocation(new Point(posX, posY));
+        backgroundColor = Color.DARK_GRAY;
+        borderColor = Color.WHITE;
+
+        // set up class as observer so it will be updated when the score data changes
+        scoreKeeper.addObserver(this);
+    }
+
+    @Override
+    public void paint(Graphics2D g2) {
+        // draw the background texture image
+        g2.drawImage(backgroundImage, 0, 0, this);
+
+        // draw the text
+        g2.setColor(Color.BLACK);
+        g2.drawString(data, 30, 47);
+    }
+
+    @Override
+    public void scoreUpdate(Map<String, Integer> scoreInfo) {
+        data = scoreInfo.get(label).toString();
+    }
 }

@@ -35,7 +35,7 @@ public class ScoreKeeperImpl implements ScoreKeeper {
     /**
      * List of observers that are interested in scoring changes
      */
-	private List<ScoreObserver> observers = new ArrayList<>();
+    private List<ScoreObserver> observers = new ArrayList<>();
 
     private int level;
     private int rows;
@@ -71,10 +71,10 @@ public class ScoreKeeperImpl implements ScoreKeeper {
      * Add an observer for the score
      * @param observer ScoreObserver
      */
-	@Override
-	public void addObserver(ScoreObserver observer) {
-		observers.add(observer);
-	}
+    @Override
+    public void addObserver(ScoreObserver observer) {
+        observers.add(observer);
+    }
 
     /**
      * This method should be called whenever the score changes so the observers can be
@@ -98,10 +98,10 @@ public class ScoreKeeperImpl implements ScoreKeeper {
      * Return the level the player is currently on
      * @return int
      */
-	@Override
-	public int getLevel() {
-		return level;
-	}
+    @Override
+    public int getLevel() {
+        return level;
+    }
 
     @Override
     public int getRows() {
@@ -117,9 +117,9 @@ public class ScoreKeeperImpl implements ScoreKeeper {
      * Adds the specified number of rows cleared to the score information
      * @param numberOfRows int
      */
-	@Override
-	public void clearedRows(int numberOfRows) {
-		rows += numberOfRows;
+    @Override
+    public void clearedRows(int numberOfRows) {
+        rows += numberOfRows;
         level = (rows / 10) + 1;
         score += clearRowScoring.get(numberOfRows);
 
@@ -140,7 +140,7 @@ public class ScoreKeeperImpl implements ScoreKeeper {
      * @param dropHeight int number of rows dropped from
      */
     @Override
-	public void fastDrop(int dropHeight) {
+    public void fastDrop(int dropHeight) {
         score += specialScoring.get("dropRow") * dropHeight;
 
         scoreChanged();
@@ -150,11 +150,11 @@ public class ScoreKeeperImpl implements ScoreKeeper {
      * Reset the score for a new game
      */
     @Override
-	public void reset() {
-		level = 1;
+    public void reset() {
+        level = 1;
         rows = 0;
         score = 0;
 
         scoreChanged();
-	}
+    }
 }

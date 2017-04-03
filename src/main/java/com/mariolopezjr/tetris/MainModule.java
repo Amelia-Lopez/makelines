@@ -17,35 +17,35 @@ import com.mariolopezjr.tetris.gui.BlockBoardView;
 import com.mariolopezjr.tetris.gui.MainWindow;
 
 public class MainModule extends AbstractModule {
-	
-	private static Logger log = LoggerFactory.getLogger(MainModule.class);
 
-	@Override
-	protected void configure() {
-		bind(Paintable.class)
-        	.annotatedWith(Names.named("All"))
-        	.to(MainWindow.class);
-		
-		bind(Paintable.class)
-    		.annotatedWith(Names.named("Board"))
-    		.to(BlockBoardView.class);
-	}
-	
-	@Provides @Singleton
-	public Configuration providesConfiguration() {
-		CombinedConfiguration config = null;
-		
-		try {
-			DefaultConfigurationBuilder builder = new DefaultConfigurationBuilder("config/config.xml");
-			config = builder.getConfiguration(true);
-			config.setExpressionEngine(new XPathExpressionEngine());
-		} catch (Throwable t) {
-			// don't bother running the application if we can't load configuration
-			log.error("Unable to load configuration.", t);
-			System.exit(1);
-		}
-		
-		return config;
-	}
+    private static Logger log = LoggerFactory.getLogger(MainModule.class);
+
+    @Override
+    protected void configure() {
+        bind(Paintable.class)
+            .annotatedWith(Names.named("All"))
+            .to(MainWindow.class);
+
+        bind(Paintable.class)
+            .annotatedWith(Names.named("Board"))
+            .to(BlockBoardView.class);
+    }
+
+    @Provides @Singleton
+    public Configuration providesConfiguration() {
+        CombinedConfiguration config = null;
+
+        try {
+            DefaultConfigurationBuilder builder = new DefaultConfigurationBuilder("config/config.xml");
+            config = builder.getConfiguration(true);
+            config.setExpressionEngine(new XPathExpressionEngine());
+        } catch (Throwable t) {
+            // don't bother running the application if we can't load configuration
+            log.error("Unable to load configuration.", t);
+            System.exit(1);
+        }
+
+        return config;
+    }
 
 }

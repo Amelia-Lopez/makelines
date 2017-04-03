@@ -18,44 +18,44 @@ public class MainPanel extends JPanel {
 
     private static Logger log = LoggerFactory.getLogger(MainPanel.class);
 
-	private static final long serialVersionUID = 7434660167829121638L;
+    private static final long serialVersionUID = 7434660167829121638L;
 
-	@Inject
-	private Configuration config;
-	
-	@Inject
-	private ReflectionUtil reflectionUtil;
+    @Inject
+    private Configuration config;
+
+    @Inject
+    private ReflectionUtil reflectionUtil;
 
     @Inject
     private MessagePanel messagePanel;
 
     @Inject
     private Background background;
-	
-	/**
-	 * Set up this panel
-	 */
-	public void setupPanel() {
-		// load config values
-		int width = config.getInt("gui/panel/dimensions/@width");
-		int height = config.getInt("gui/panel/dimensions/@height");
-		
-		setOpaque(true);
-		setLayout(null);
-		setSize(new Dimension(width, height));
 
-		setupContents();
+    /**
+     * Set up this panel
+     */
+    public void setupPanel() {
+        // load config values
+        int width = config.getInt("gui/panel/dimensions/@width");
+        int height = config.getInt("gui/panel/dimensions/@height");
+
+        setOpaque(true);
+        setLayout(null);
+        setSize(new Dimension(width, height));
+
+        setupContents();
     }
-	
-	/**
-	 * Populate this panel with components, set up in order for layering
-	 */
-	private void setupContents() {
+
+    /**
+     * Populate this panel with components, set up in order for layering
+     */
+    private void setupContents() {
         // set up the message panel
         messagePanel.init();
         add(messagePanel);
 
-		// set up the block boards (primary game play area and next piece display)
+        // set up the block boards (primary game play area and next piece display)
         String configPath = "gui/blockboards/";
         int numOfBlockBoards = config.getInt(configPath + "@size");
         for (int position = 1; position <= numOfBlockBoards; position++) {
@@ -67,13 +67,13 @@ public class MainPanel extends JPanel {
         }
 
         // set up GUI components that display score info
-		configPath = "gui/score/";
-		int numOfScoreBoxes = config.getInt(configPath + "@size");
-		for (int position = 1; position <= numOfScoreBoxes; position++) {
-			ScoreInfoBox scoreInfoBox = reflectionUtil.newInstance(ScoreInfoBox.class);
-			scoreInfoBox.setupGui(configPath + "scoreInfo[" + position + "]/");
-			add(scoreInfoBox);
-		}
+        configPath = "gui/score/";
+        int numOfScoreBoxes = config.getInt(configPath + "@size");
+        for (int position = 1; position <= numOfScoreBoxes; position++) {
+            ScoreInfoBox scoreInfoBox = reflectionUtil.newInstance(ScoreInfoBox.class);
+            scoreInfoBox.setupGui(configPath + "scoreInfo[" + position + "]/");
+            add(scoreInfoBox);
+        }
 
         // background
         background.init();

@@ -14,61 +14,61 @@ import org.slf4j.LoggerFactory;
 public class BlockBoard extends BasicBlockBoard {
 
     private static Logger log = LoggerFactory.getLogger(BlockBoard.class);
-	
-	@Inject
-	private Configuration config;
-	
-	@Inject
-	private TetrominoFactory tetrominoFactory;
+
+    @Inject
+    private Configuration config;
+
+    @Inject
+    private TetrominoFactory tetrominoFactory;
 
     @Inject
     private NextPieceBlockBoard nextPieceBlockBoard;
 
-	/**
-	 * The four falling blocks
-	 */
-	private LinkedList<Position> fallingBlocks;
-	
-	/**
-	 * The length of the tetromino (2, 3 or 4).  Used when rotating the falling
-	 * tetromino  
-	 */
-	private int tetrominoLength;
-	
-	/**
-	 * The upper-left point of the tetromino area used when rotating
-	 */
-	private Position rotatePosition;
-	
-	/**
-	 * The next piece
-	 */
-	private Tetromino nextPiece;
+    /**
+     * The four falling blocks
+     */
+    private LinkedList<Position> fallingBlocks;
 
-	
-	/**
-	 * Constructor
-	 */
-	public BlockBoard() {
-		width = 10;
+    /**
+     * The length of the tetromino (2, 3 or 4).  Used when rotating the falling
+     * tetromino
+     */
+    private int tetrominoLength;
+
+    /**
+     * The upper-left point of the tetromino area used when rotating
+     */
+    private Position rotatePosition;
+
+    /**
+     * The next piece
+     */
+    private Tetromino nextPiece;
+
+
+    /**
+     * Constructor
+     */
+    public BlockBoard() {
+        width = 10;
         height = 20;
         heightPadding = 3;
-	}
-	
-	public void init() {
+    }
+
+    public void init() {
         super.init();
-		tetrominoFactory.init();
+        tetrominoFactory.init();
         rotatePosition = new Position();
-	}
-	
-	/**
-	 * Start the game
-	 */
-	public void start() {
-		board = new Block[width][height + heightPadding];
+    }
+
+    /**
+     * Start the game
+     */
+    public void start() {
+        board = new Block[width][height + heightPadding];
         putNewPieceOnBlockBoard(tetrominoFactory.getRandomTetromino());
-		loadNextPiece();
-	}
+        loadNextPiece();
+    }
 
     /**
      * Drop the falling blocks one row.  Return false if unable to.
