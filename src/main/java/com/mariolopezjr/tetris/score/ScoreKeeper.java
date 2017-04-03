@@ -8,19 +8,19 @@ public interface ScoreKeeper {
 
     void init();
 
-	void addObserver(ScoreObserver observer);
-	
-	int getLevel();
+    void addObserver(ScoreObserver observer);
+
+    int getLevel();
 
     int getRows();
 
     int getScore();
-	
-	void clearedRows(int numberOfRows);
+
+    void clearedRows(int numberOfRows);
 
     void clearedEntireBoard();
-	
-	void fastDrop(int dropHeight);
-	
-	void reset();
+
+    void fastDrop(int dropHeight);
+
+    void reset();
 }

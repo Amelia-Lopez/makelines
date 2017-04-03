@@ -3,44 +3,44 @@ package com.mariolopezjr.tetris.board;
 import java.util.LinkedList;
 
 public class Tetromino {
-	
-	private String name;
 
-	private LinkedList<Position> positions;
-	
-	private Block block;
-	
-	private int length;
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    private LinkedList<Position> positions;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private Block block;
 
-	public LinkedList<Position> getPositions() {
-		return positions;
-	}
+    private int length;
 
-	public void setPositions(LinkedList<Position> positions) {
-		this.positions = positions;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public Block getBlock() {
-		return block;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setBlock(Block block) {
-		this.block = block;
-	}
+    public LinkedList<Position> getPositions() {
+        return positions;
+    }
 
-	public int getLength() {
-		return length;
-	}
+    public void setPositions(LinkedList<Position> positions) {
+        this.positions = positions;
+    }
 
-	public void setLength(int length) {
-		this.length = length;
-	}
+    public Block getBlock() {
+        return block;
+    }
+
+    public void setBlock(Block block) {
+        this.block = block;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
 }

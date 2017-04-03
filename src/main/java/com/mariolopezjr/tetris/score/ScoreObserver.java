@@ -4,5 +4,5 @@ import java.util.Map;
 
 public interface ScoreObserver {
 
-	void scoreUpdate(Map<String, Integer> scoreInfo);
+    void scoreUpdate(Map<String, Integer> scoreInfo);
 }

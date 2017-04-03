@@ -34,24 +34,24 @@ public class MainController implements
 
     @Inject
     private Configuration config;
-	
-	@Inject
-	private BlockBoard blockBoard;
-	
-	@Inject @Named("All")
-	private Paintable entireWindow;
-	
-	@Inject @Named("Board")
-	private Paintable boardPanel;
-	
-	@Inject
-	private ScoreKeeper scoreKeeper;
-	
-	@Inject
-	private ScoreBoardView scoreBoardView;
-	
-	@Inject
-	private Ticker ticker;
+
+    @Inject
+    private BlockBoard blockBoard;
+
+    @Inject @Named("All")
+    private Paintable entireWindow;
+
+    @Inject @Named("Board")
+    private Paintable boardPanel;
+
+    @Inject
+    private ScoreKeeper scoreKeeper;
+
+    @Inject
+    private ScoreBoardView scoreBoardView;
+
+    @Inject
+    private Ticker ticker;
 
     @Inject
     private InputController inputController;
@@ -71,7 +71,7 @@ public class MainController implements
      * Will skip a tick (which just drops the tetromino down one row) in case a particular
      * event occurs
      */
-	private volatile boolean skipATick = false;
+    private volatile boolean skipATick = false;
 
     /**
      * Lock that should be synchronized whenever the blockBoard is being accessed
@@ -104,11 +104,11 @@ public class MainController implements
     private List<NewGameObserver> newGameObservers = new LinkedList<>();
 
     /**
-	 * Constructor
-	 */
-	public MainController() {
-		// do nothing
-	}
+     * Constructor
+     */
+    public MainController() {
+        // do nothing
+    }
 
     /**
      * Initialize this class
@@ -126,7 +126,7 @@ public class MainController implements
     }
 
     @Override
-	public void newGame() {
+    public void newGame() {
         log.debug("Starting new game");
 
         if (!initialized)
@@ -177,15 +177,15 @@ public class MainController implements
         }
     }
 
-	@Override
-	public void tick() {
+    @Override
+    public void tick() {
         if (skipATick) {
             skipATick = false;
             return;
         }
 
         dropTetrominoDownOneRow();
-	}
+    }
 
     /**
      * Drops the tetromino down one row and sets it in place if it can't
