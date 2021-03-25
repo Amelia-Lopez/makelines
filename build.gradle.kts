@@ -7,7 +7,7 @@ plugins {
     application                                            // includes java plugin, easier to execute during testing
     //jacoco                                                 // code coverage
     //id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
-    //id("com.github.johnrengelman.shadow") version "1.2.4"  // creates an executable fat JAR (includes dependencies)
+    id("com.github.johnrengelman.shadow") version "5.2.0"  // creates an executable fat JAR (includes dependencies)
     //id("edu.sc.seis.macAppBundle") version "2.1.6"         // creates an OS X bundle
 }
 
@@ -21,7 +21,6 @@ java {
     targetCompatibility = VERSION_1_8
 }
 
-/*
 val jar: Jar by tasks
 jar.apply {
     manifest.attributes.apply {
@@ -32,7 +31,6 @@ jar.apply {
         put("Created-By", "Gradle ${project.gradle.gradleVersion}")
     }
 }
-*/
 
 repositories {
     mavenCentral()
