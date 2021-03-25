@@ -36,7 +36,7 @@ repositories {
     mavenCentral()
 }
 
-val mainClassNameProp = "amylopez.makelines.TetrisApp"
+val mainClassNameProp = "amylopez.makelines.MakelinesApp"
 
 application {
     mainClassName = mainClassNameProp

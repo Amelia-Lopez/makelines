@@ -14,11 +14,11 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 
 /**
- * Main entry point of the Tetris app
+ * Main entry point of the Makelines app
  */
-public class TetrisApp {
+public class MakelinesApp {
 
-    private static Logger log = LoggerFactory.getLogger(TetrisApp.class);
+    private static Logger log = LoggerFactory.getLogger(MakelinesApp.class);
 
     public static void main(String[] args) throws Exception {
         log.info("Application started");
