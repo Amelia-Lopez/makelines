@@ -3,12 +3,12 @@ import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
-    groovy
+    //groovy
     application                                            // includes java plugin, easier to execute during testing
-    jacoco                                                 // code coverage
-    id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
-    id("com.github.johnrengelman.shadow") version "1.2.4"  // creates an executable fat JAR (includes dependencies)
-    id("edu.sc.seis.macAppBundle") version "2.1.6"         // creates an OS X bundle
+    //jacoco                                                 // code coverage
+    //id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
+    //id("com.github.johnrengelman.shadow") version "1.2.4"  // creates an executable fat JAR (includes dependencies)
+    //id("edu.sc.seis.macAppBundle") version "2.1.6"         // creates an OS X bundle
 }
 
 allprojects {
@@ -21,6 +21,7 @@ java {
     targetCompatibility = VERSION_1_8
 }
 
+/*
 val jar: Jar by tasks
 jar.apply {
     manifest.attributes.apply {
@@ -31,6 +32,7 @@ jar.apply {
         put("Created-By", "Gradle ${project.gradle.gradleVersion}")
     }
 }
+*/
 
 repositories {
     mavenCentral()
@@ -42,6 +44,7 @@ application {
     mainClassName = mainClassNameProp
 }
 
+/*
 macAppBundle {
     mainClassName = mainClassNameProp
     icon = "build-resources/osx/icons/icon_256.icns"
@@ -57,6 +60,7 @@ jacoco {
         html.isEnabled = true
     }
 }
+*/
 
 dependencies {
     compile("com.google.inject:guice:3.0")
@@ -68,6 +72,6 @@ dependencies {
     compile("org.slf4j:slf4j-api:1.7.5")
 
     testCompile("junit:junit:4.12")
-    testCompile("org.codehaus.groovy:groovy-all:2.4.9")
-    testCompile("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
+    //testCompile("org.codehaus.groovy:groovy-all:2.4.9")
+    //testCompile("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
 }
