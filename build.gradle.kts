@@ -3,10 +3,10 @@ import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
-    //groovy
+    groovy
     application                                            // includes java plugin, easier to execute during testing
-    //jacoco                                                 // code coverage
-    //id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
+    jacoco                                                 // code coverage
+    id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
     id("com.github.johnrengelman.shadow") version "5.2.0"  // creates an executable fat JAR (includes dependencies)
     id("edu.sc.seis.macAppBundle") version "2.3.0"         // creates an OS X bundle
 }
@@ -47,7 +47,6 @@ macAppBundle {
     icon = "build-resources/osx/icons/icon_256.icns"
 }
 
-/*
 jacoco {
     toolVersion = "0.7.9"
 }
@@ -58,7 +57,6 @@ jacoco {
         html.isEnabled = true
     }
 }
-*/
 
 dependencies {
     compile("com.google.inject:guice:3.0")
@@ -70,6 +68,6 @@ dependencies {
     compile("org.slf4j:slf4j-api:1.7.5")
 
     testCompile("junit:junit:4.12")
-    //testCompile("org.codehaus.groovy:groovy-all:2.4.9")
-    //testCompile("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
+    testCompile("org.codehaus.groovy:groovy-all:2.4.9")
+    testCompile("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
 }
