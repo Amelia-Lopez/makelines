@@ -29,15 +29,15 @@
         </background>
         <blockboards size="2">
             <blockboard name="Game Board" color="black" border_color="white">
-                <classes model="com.mariolopezjr.tetris.board.BlockBoard"
-                        view="com.mariolopezjr.tetris.gui.BlockBoardView" />
+                <classes model="amylopez.makelines.board.BlockBoard"
+                        view="amylopez.makelines.gui.BlockBoardView" />
                 <string show_name="false" color="yellow" x="0" y="0" />
                 <dimensions width="222" height="442" />
                 <position x="208" y="9" />
             </blockboard>
             <blockboard name="Next:" color="black" border_color="white">
-                <classes model="com.mariolopezjr.tetris.board.NextPieceBlockBoard"
-                        view="com.mariolopezjr.tetris.gui.NextPieceView" />
+                <classes model="amylopez.makelines.board.NextPieceBlockBoard"
+                        view="amylopez.makelines.gui.NextPieceView" />
                 <string show_name="true" color="yellow" x="6" y="16" />
                 <dimensions width="130" height="130" />
                 <position x="20" y="9" />

@@ -12,7 +12,7 @@ plugins {
 }
 
 allprojects {
-    group = "com.mariolopezjr"
+    group = "amylopez"
     version = "0.9.0-SNAPSHOT"
 }
 
@@ -36,7 +36,7 @@ repositories {
     mavenCentral()
 }
 
-val mainClassNameProp = "com.mariolopezjr.tetris.TetrisApp"
+val mainClassNameProp = "amylopez.makelines.TetrisApp"
 
 application {
     mainClassName = mainClassNameProp

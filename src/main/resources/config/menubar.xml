@@ -5,11 +5,11 @@
             <item name="New Game"
                 mnemonic="VK_N"
                 type="JMenuItem"
-                action="com.mariolopezjr.tetris.controller.input.action.NewGameAction" />
+                action="amylopez.makelines.controller.input.action.NewGameAction" />
             <item name="Pause"
                 mnemonic="VK_P"
                 type="JMenuItem"
-                action="com.mariolopezjr.tetris.controller.input.action.PauseGameAction">
+                action="amylopez.makelines.controller.input.action.PauseGameAction">
                 <message type="image">
                     <image file="/textures/paused.png" />
                 </message>
@@ -17,7 +17,7 @@
             <item name="Abort Game"
                  mnemonic="VK_A"
                  type="JMenuItem"
-                 action="com.mariolopezjr.tetris.controller.input.action.AbortGameAction">
+                 action="amylopez.makelines.controller.input.action.AbortGameAction">
                  <message type="image">
                      <image file="/textures/gameover.png" />
                  </message>
@@ -25,17 +25,17 @@
             <item name="Quit"
                 mnemonic="VK_Q"
                 type="JMenuItem"
-                action="com.mariolopezjr.tetris.controller.input.action.QuitAction" />
+                action="amylopez.makelines.controller.input.action.QuitAction" />
         </menu>
         <!--<menu name="Options" mnemonic="VK_O">
             <item name="Show High Scores"
                 mnemonic="VK_H"
                 type="JMenuItem"
-                action="com.mariolopezjr.tetris.action.ShowHighScoresAction" />
+                action="amylopez.makelines.action.ShowHighScoresAction" />
             <item name="Accelerated Left/Right"
                 mnemonic="VK_A"
                 type="JCheckBoxMenuItem"
-                action="com.mariolopezjr.tetris.action.AcceleratedMotionToggleAction" />
+                action="amylopez.makelines.action.AcceleratedMotionToggleAction" />
         </menu> -->
     </menus>
 </config>

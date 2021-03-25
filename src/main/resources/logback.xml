@@ -6,14 +6,14 @@
     </encoder>
   </appender>
 
-  <logger name="com.mariolopezjr.tetris.audio" level="debug"/>
-  <logger name="com.mariolopezjr.tetris.board" level="info"/>
-  <logger name="com.mariolopezjr.tetris.controller" level="info"/>
-  <logger name="com.mariolopezjr.tetris.controller.input" level="info"/>
-  <logger name="com.mariolopezjr.tetris.controller.input.action.gameplay" level="info"/>
-  <logger name="com.mariolopezjr.tetris.gui" level="info"/>
-  <logger name="com.mariolopezjr.tetris.score.impl" level="info"/>
-  <logger name="com.mariolopezjr.tetris.util" level="info"/>
+  <logger name="amylopez.makelines.audio" level="debug"/>
+  <logger name="amylopez.makelines.board" level="info"/>
+  <logger name="amylopez.makelines.controller" level="info"/>
+  <logger name="amylopez.makelines.controller.input" level="info"/>
+  <logger name="amylopez.makelines.controller.input.action.gameplay" level="info"/>
+  <logger name="amylopez.makelines.gui" level="info"/>
+  <logger name="amylopez.makelines.score.impl" level="info"/>
+  <logger name="amylopez.makelines.util" level="info"/>
 
   <root level="info">
     <appender-ref ref="STDOUT" />
