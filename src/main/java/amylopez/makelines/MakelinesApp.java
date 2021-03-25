@@ -21,7 +21,7 @@ public class MakelinesApp {
     private static Logger log = LoggerFactory.getLogger(MakelinesApp.class);
 
     public static void main(String[] args) throws Exception {
-        log.info("Application started");
+        log.info("Application starting");
 
         // set up main Guice module
         Injector injector = Guice.createInjector(new MainModule());

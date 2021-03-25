@@ -31,14 +31,7 @@ To build the source code, run the appropriate command for your OS.
 
 ## Launch the application
 After building the source code, you can run the game using the appropriate command for your OS.
-
-### Mac
-
-```bash
-open build/macApp/makelines.app
-```
-
-### Linux
+### Mac/Linux
 
 ```bash
 ./gradlew run

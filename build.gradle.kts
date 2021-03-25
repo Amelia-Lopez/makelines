@@ -9,7 +9,6 @@ plugins {
     jacoco                                                 // code coverage
     id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
     id("com.github.johnrengelman.shadow") version "5.2.0"  // creates an executable fat JAR (includes dependencies)
-    id("edu.sc.seis.macAppBundle") version "2.3.0"         // creates an OS X bundle, will break in Gradle 7
     id("org.openjfx.javafxplugin") version "0.0.9"         // adds support for audio
 }
 
@@ -42,11 +41,6 @@ val mainClassNameProp = "amylopez.makelines.MakelinesApp"
 
 application {
     mainClassName = mainClassNameProp // will break in Gradle 8
-}
-
-macAppBundle {
-    mainClassName = mainClassNameProp
-    icon = "build-resources/osx/icons/icon_256.icns"
 }
 
 jacoco {

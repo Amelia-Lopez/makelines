@@ -41,11 +41,10 @@ public class MainModule extends AbstractModule {
             config.setExpressionEngine(new XPathExpressionEngine());
         } catch (Throwable t) {
             // don't bother running the application if we can't load configuration
-            log.error("Unable to load configuration.", t);
+            log.error("Unable to load configuration", t);
             System.exit(1);
         }
 
         return config;
     }
-
 }
