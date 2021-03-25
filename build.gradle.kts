@@ -3,12 +3,13 @@ import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
 plugins {
+    `java-library`
     groovy
     application                                            // includes java plugin, easier to execute during testing
     jacoco                                                 // code coverage
     id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
     id("com.github.johnrengelman.shadow") version "5.2.0"  // creates an executable fat JAR (includes dependencies)
-    id("edu.sc.seis.macAppBundle") version "2.3.0"         // creates an OS X bundle
+    id("edu.sc.seis.macAppBundle") version "2.3.0"         // creates an OS X bundle, will break in Gradle 7
 }
 
 allprojects {
@@ -25,7 +26,7 @@ val jar: Jar by tasks
 jar.apply {
     manifest.attributes.apply {
         put("Implementation-Title", "Make Lines")
-        put("Implementation-Version", version)
+        put("Implementation-Version", archiveVersion)
         put("Built-By", System.getProperty("user.name"))
         put("Build-Jdk", org.gradle.internal.jvm.Jvm.current())
         put("Created-By", "Gradle ${project.gradle.gradleVersion}")
@@ -39,7 +40,7 @@ repositories {
 val mainClassNameProp = "amylopez.makelines.MakelinesApp"
 
 application {
-    mainClassName = mainClassNameProp
+    mainClassName = mainClassNameProp // will break in Gradle 8
 }
 
 macAppBundle {
@@ -59,15 +60,15 @@ jacoco {
 }
 
 dependencies {
-    compile("com.google.inject:guice:3.0")
-    compile("commons-configuration:commons-configuration:1.9")
-    compile("commons-beanutils:commons-beanutils:1.8.3")
-    compile("commons-jxpath:commons-jxpath:1.3")
-    compile("ch.qos.logback:logback-core:1.0.13")
-    compile("ch.qos.logback:logback-classic:1.0.13")
-    compile("org.slf4j:slf4j-api:1.7.5")
+    implementation("com.google.inject:guice:3.0")
+    implementation("commons-configuration:commons-configuration:1.9")
+    implementation("commons-beanutils:commons-beanutils:1.8.3")
+    implementation("commons-jxpath:commons-jxpath:1.3")
+    implementation("ch.qos.logback:logback-core:1.0.13")
+    implementation("ch.qos.logback:logback-classic:1.0.13")
+    implementation("org.slf4j:slf4j-api:1.7.5")
 
-    testCompile("junit:junit:4.12")
-    testCompile("org.codehaus.groovy:groovy-all:2.4.9")
-    testCompile("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
+    testImplementation("junit:junit:4.12")
+    testImplementation("org.codehaus.groovy:groovy-all:2.4.9")
+    testImplementation("org.spockframework:spock-core:1.1-groovy-2.4-rc-3")
 }
