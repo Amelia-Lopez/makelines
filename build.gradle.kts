@@ -8,7 +8,7 @@ plugins {
     //jacoco                                                 // code coverage
     //id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
     id("com.github.johnrengelman.shadow") version "5.2.0"  // creates an executable fat JAR (includes dependencies)
-    //id("edu.sc.seis.macAppBundle") version "2.1.6"         // creates an OS X bundle
+    id("edu.sc.seis.macAppBundle") version "2.3.0"         // creates an OS X bundle
 }
 
 allprojects {
@@ -42,12 +42,12 @@ application {
     mainClassName = mainClassNameProp
 }
 
-/*
 macAppBundle {
     mainClassName = mainClassNameProp
     icon = "build-resources/osx/icons/icon_256.icns"
 }
 
+/*
 jacoco {
     toolVersion = "0.7.9"
 }
