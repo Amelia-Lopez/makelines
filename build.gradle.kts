@@ -1,4 +1,4 @@
-import org.gradle.api.JavaVersion.VERSION_1_8
+import org.gradle.api.JavaVersion.VERSION_11
 import org.gradle.jvm.tasks.Jar
 import org.gradle.testing.jacoco.tasks.JacocoReport
 
@@ -10,6 +10,7 @@ plugins {
     id("com.github.kt3k.coveralls") version "2.8.1"        // coveralls.io
     id("com.github.johnrengelman.shadow") version "5.2.0"  // creates an executable fat JAR (includes dependencies)
     id("edu.sc.seis.macAppBundle") version "2.3.0"         // creates an OS X bundle, will break in Gradle 7
+    id("org.openjfx.javafxplugin") version "0.0.9"         // adds support for audio
 }
 
 allprojects {
@@ -18,8 +19,8 @@ allprojects {
 }
 
 java {
-    sourceCompatibility = VERSION_1_8
-    targetCompatibility = VERSION_1_8
+    sourceCompatibility = VERSION_11
+    targetCompatibility = VERSION_11
 }
 
 val jar: Jar by tasks
@@ -49,7 +50,7 @@ macAppBundle {
 }
 
 jacoco {
-    toolVersion = "0.7.9"
+    toolVersion = "0.8.6"
 }
 
 (getTasksByName("jacocoTestReport", false).first() as JacocoReport).apply {
@@ -57,6 +58,11 @@ jacoco {
         xml.isEnabled = true
         html.isEnabled = true
     }
+}
+
+javafx {
+    version = "15.0.1"
+    modules("javafx.media", "javafx.swing")
 }
 
 dependencies {
